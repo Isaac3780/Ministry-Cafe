@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build-A-Bowl 🍜 | Kingdom Academy DIY Hotpot Cafe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍲</text></svg>" />
+</head>
+<body>
+  <div class="recruit-banner" id="recruitBanner">
+    <span>🎓 <strong>2-YEAR TRAINEESHIP OPEN!</strong> Earn While You Learn in our DIY Hotpot Cafe</span>
+    <a class="cta" href="interns.html">Apply Now →</a>
+    <button class="close-banner" onclick="document.getElementById('recruitBanner').classList.add('hide')">×</button>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="cup">🍲</span><span>Kingdom Academy<small>DIY Hotpot Cafe</small></span></a>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" class="active">Build-A-Bowl</a></li>
+        <li><a href="about.html">G.R.O.W. + Vision</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="interns.html" class="hire">🎓 2-Year Traineeship</a></li>
+        <li><a target="_blank" rel="noopener" href="file:///C:/Users/0473c/Documents/Isaac/Broad%20Vision/charity-site/echofromabove/charity-site/index.html" class="back">↩ Broad Vision</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero hero-small">
+    <div class="hero-content">
+      <div class="hero-kicker">DIY in 60 seconds</div>
+      <h1>Build-A-Bowl 🍜</h1>
+      <p>Base $6.90 = broth + noodles + 3 free veg. Add toppings. AI totals it live.</p>
+      <div><button class="btn btn-broth" id="openCartTop">🧺 View Tray (<span id="cartCountTop">0</span>)</button></div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-title"><div class="kicker">Step 1–4</div><h2>DIY Your Hotpot Bowl</h2><p>Tap to select. Watch the price. Add to tray.</p></div>
+
+      <div class="builder">
+        <h3>🍲 1. Pick Broth (base $6.90)</h3>
+        <div class="opt-grid" id="brothGrid"></div>
+
+        <h3>🍜 2. Pick Noodles (included)</h3>
+        <div class="opt-grid" id="noodleGrid"></div>
+
+        <h3>🥬 3. Add Toppings ($0.80 – $2.50)</h3>
+        <p style="font-size:.85rem;color:var(--muted)">First 3 veg FREE — code: VEG. Tap to add/remove.</p>
+        <div class="topping-grid" id="toppingGrid" style="margin-top:10px;"></div>
+
+        <h3>🌶️ 4. Spice Level: <span id="spiceLabel">1 – Mild Kick</span></h3>
+        <div class="spice-row"><span>😌 0</span><input type="range" id="spice" min="0" max="5" value="1" /><span>🥵 5</span></div>
+
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-dark" id="aiSuggest" style="border:none;">✨ AI Surprise Me</button>
+          <button class="btn btn-chili" id="resetBowl" style="border:none;">Reset</button>
+        </div>
+
+        <div class="bill">
+          <div><div style="font-size:.8rem;opacity:.7;">YOUR BOWL</div><div id="bowlSummary" style="font-weight:700;">Mala + Ramen + 0 toppings</div></div>
+          <div class="total" id="bowlTotal">$6.90</div>
+          <button class="btn btn-broth" id="addBowl" style="border:none;">Add Bowl to Tray +</button>
+        </div>
+      </div>
+
+      <div class="quiz" id="quiz" style="margin-top:36px;">
+        <h3>🤖 Not sure? 3-question Broth Finder</h3>
+        <div class="q" data-q="mood"><p>1. Mood?</p><div class="opts"><button data-v="spicy">🌶️ Need kick</button><button data-v="comfort">🥰 Comfort</button><button data-v="light">🥗 Light</button></div></div>
+        <div class="q" data-q="budget"><p>2. Budget?</p><div class="opts"><button data-v="low">💰 Under $9</button><button data-v="mid">😋 $9–12</button><button data-v="feast">🎉 Feast mode</button></div></div>
+        <div class="q" data-q="diet"><p>3. Diet?</p><div class="opts"><button data-v="halal">Halal-friendly</button><button data-v="veg">Veg</button><button data-v="all">All in!</button></div></div>
+        <button class="btn btn-dark" id="quizGo" style="border:none; margin-top:10px;">Get My Broth ✨</button>
+        <div class="quiz-result" id="quizResult"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" style="padding-top:40px;">
+    <div class="wrap">
+      <div class="section-title"><div class="kicker">Quick Add</div><h2>Signature Sets</h2></div>
+      <div class="filter-bar" id="filterBar"><button class="active" data-f="all">All</button><button data-f="set">Sets</button><button data-f="side">Sides & Drinks</button></div>
+      <div class="menu-grid" id="menuGrid"></div>
+      <p class="note">Edit broths / toppings / prices in <strong>script.js → BROTHS, NOODLES, TOPPINGS, MENU</strong>.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div><h4>Kingdom Academy</h4><p style="max-width:280px;">DIY mini hotpot café & training centre. Building livelihoods. Making disciples. Feeding His sheep.</p></div>
+      <div><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="menu.html">Build-A-Bowl</a></li><li><a href="about.html">G.R.O.W. + Vision</a></li><li><a href="interns.html">🎓 2-Year Traineeship</a></li></ul></div>
+      <div><h4>Parent Ministry</h4><ul><li><a target="_blank" rel="noopener" href="file:///C:/Users/0473c/Documents/Isaac/Broad%20Vision/charity-site/echofromabove/charity-site/index.html">↩ Broad Vision</a></li><li><a target="_blank" rel="noopener" href="file:///C:/Users/0473c/Documents/Isaac/Broad%20Vision/charity-site/echofromabove/charity-site/about.html">About</a></li><li><a target="_blank" rel="noopener" href="file:///C:/Users/0473c/Documents/Isaac/Broad%20Vision/charity-site/echofromabove/charity-site/mission.html">Missions</a></li></ul></div>
+      <div><h4>Contact Us</h4><ul><li><a href="contact.html">Say Hello</a></li><li><a href="https://forms.gle/yKgfLnRqDMRPCcc16" target="_blank" rel="noopener">Contact Form</a></li><li><a href="https://forms.gle/M6q2qT2wRfyZ9fyo7" target="_blank" rel="noopener">Prayer Request</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2026 BroadVision Kingdom Livelihood Academy • John 21:15-17 • By Jenny Kwek</div>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <header><b>🧺 Your Tray</b><button id="closeCart" style="background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer;">×</button></header>
+    <div class="cart-items" id="cartItems"><p>Empty. Build a bowl!</p></div>
+    <footer>
+      <div style="display:flex;justify-content:space-between;font-weight:800;margin-bottom:12px;"><span>Total</span><span id="cartTotal">$0.00</span></div>
+      <button class="btn btn-chili" id="checkoutBtn" style="width:100%;border:none;">Checkout (Demo) →</button>
+    </footer>
+  </aside>
+
+  <button class="chat-fab" id="chatFab">🍲</button>
+  <div class="chatbox" id="chatbox">
+    <header style="background:var(--chili);color:#fff;padding:14px 16px;"><b>Slurpy — AI Hotpot Buddy 🤖</b></header>
+    <div class="chatlog" id="chatlog"><div class="msg bot">Craving spicy, laksa, or light? Tell me + budget and I'll build it!</div></div>
+    <div class="chatinput"><input id="chatText" placeholder="e.g. mala medium spicy" /><button id="chatSend">➤</button></div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

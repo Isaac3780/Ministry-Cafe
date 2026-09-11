@@ -1,0 +1,4 @@
+# ---> Static site, no dependencies
+.DS_Store
+Thumbs.db
+*.log
