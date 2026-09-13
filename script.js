@@ -127,22 +127,37 @@ function initQuiz(){
 // put trigger words in keys, answer in reply. First match wins,
 // so keep specific topics ABOVE general ones. ★
 const CHAT_QA = [
-  { keys:["2-year","trainee","intern","hire","job","salary","pay","work","earn","study","curriculum"], reply:"🎓 2-Year Traineeship! Café shifts + English, Math, entrepreneurship + discipleship. Weekly fellowship. Allowance + meals + certificate → chef/leader/village café partner. Apply on Traineeship page!" },
-  { keys:["grow"], reply:"🌱 GROW = Guide (faith), Raise (skills), Operate (real café shifts), Walk (graduate to leader/founder). That's the rough model from the Academy deck!" },
-  { keys:["singapore","siem reap","cambodia","hq","location","where","address","hour","open"], reply:"🇸🇬 Singapore (SG) HQ (admin/curriculum) + 🇰🇭 Siem Reap (KH) training café idea (mini hotpots + church outreach). Café daily 11am–10pm, Fri/Sat till 12am!" },
-  { keys:["john","bible","verse","sheep","feed","discipleship","fellowship","church"], reply:"❤️ John 21:15-17 — 'Feed My sheep.' We feed physically (hotpot jobs) + spiritually (discipleship). Weekly fellowship compulsory for trainees!" },
+  // PAGE NAVIGATION — ask about a page → short description + link to go there
+  { keys:["menu page","menu.html","see menu","view menu","show menu","what's on the menu","what is on the menu","what do you sell","bowl builder","build your own bowl","what pages","what page"], reply:'🍜 <b>Menu page</b> — browse every set, the Build-a-Bowl builder, sides & prices. Tap a set to add it, or build your own. → <a href="menu.html">Open Menu</a>' },
+  { keys:["traineeship page","internship page","apply page","interns.html","trainee page"], reply:'🎓 <b>Traineeship page</b> — the 2-Year GROW traineeship explained: what you study, allowance, meals, and the big application form. → <a href="interns.html">Open Traineeship</a>' },
+  { keys:["about page","about.html","about us","who are you","who we are","our story","our mission"], reply:'💛 <b>About page</b> — who Kingdom Livelihood Academy is, our mission, and the Singapore + Siem Reap story behind the café. → <a href="about.html">Open About</a>' },
+  { keys:["contact page","reach us page","message page"], reply:'📞 <b>Contact page</b> — contact form, prayer form, WhatsApp, catering & how to find us. → <a href="contact.html">Open Contact</a>' },
+  { keys:["home page","go home","index.html","back to home","main page","landing page"], reply:'🏠 <b>Home</b> — the café intro, our story, and quick links to Menu, Traineeship, About & Contact. → <a href="index.html">Back to Home</a>' },
+  { keys:["echo from above","echofromabove","echo","parent ministry","broad vision","broadvision","christian mission","sub-ministry"], reply:'🌏 Echo From Above — our parent ministry! We\'re the Kingdom Livelihood Academy café side of it. See the charity & missions site: <a href="https://isaac3780.github.io/echofromabove/charity-site/index.html" target="_blank" rel="noopener">↩ Broad Vision / Echo From Above</a>' },
+  { keys:["vision","mission","transform lives","purpose","why do you exist","why this cafe","mission statement"], reply:"🌟 Vision — to transform lives through vocational training, entrepreneurship, discipleship + sustainable livelihoods. We exist to raise people, not just run cafés!" },
+  { keys:["phase","phases","timeline","roadmap","months","budget","launch","plan to start"], reply:"🗓️ Phase 1 (Months 1–3): Singapore HQ, curriculum, handbook, SOPs, registration, admin, partnerships. Phase 2 (M4–6): Siem Reap café secured, renovated, equipped, staff trained, trial ops. Phase 3 (M7–12): recruit via local churches, first intake, programme launched!" },
+  { keys:["business","business model","revenue","income","money","profit","franchise","affordable meals","community partnerships","funding","funded"], reply:"💼 Business model — affordable meals + training income + community partnerships, with future franchise / partner cafés as graduates mature." },
+  { keys:["2-year","trainee","intern","hire","job","salary","pay","earn","study","curriculum","subject"], reply:"🎓 2-Year Traineeship! Study English, Math, Customer Service, Café Operations, Inventory, Administration, Entrepreneurship, Leadership + Biblical Discipleship. Weekly fellowship is compulsory. Allowance + meals + certificate → chef / leader / village café partner. Apply on the <a href=\"interns.html\">Traineeship page</a>!" },
+  { keys:["grow","guide","raise","operate","walk","stages"], reply:"🌱 G.R.O.W. — Guide (faith, mentoring & discipleship), Raise (life skills, entrepreneurship, leadership), Operate (hands-on real café shifts), Walk (mature into leaders, disciple-makers, future café owners). All 4 stages for every trainee!" },
+  { keys:["singapore hq","headquarters","hq","administration","admin","certificates","student records","quality assurance","handbook","sop"], reply:"🇸🇬 Singapore (SG) HQ = the sending & equipping centre. Runs administration, curriculum & handbook, student records, certificates, finance & partnerships, and quality assurance." },
+  { keys:["siem reap cafe","siem reap café","training cafe","training café","first operational","chef","floor staff","community outreach","mini hotpot","bento"], reply:"🇰🇭 Siem Reap (KH) = our first operational training café: DIY mini hotpot sets + bento value meals, practical chef & floor-staff training, community outreach, and a local church partner." },
+  { keys:["vs","versus"], reply:"🇸🇬 Singapore (SG) = HQ & equipping base. 🇰🇭 Siem Reap (KH) = training café academy." },
+  { keys:["singapore","siem reap","cambodia","location","where","address","hour","open"], reply:"Café daily 11am–10pm, Fri/Sat till 12am! 🇰🇭 Siem Reap (KH) training café academy" },
+  { keys:["john","bible","verse","sheep","feed","discipleship","fellowship","church"], reply:"❤️ John 21:15-17 — 'Do you love Me?... Feed My sheep.' We feed people physically through livelihoods + spiritually through discipleship. Weekly fellowship compulsory for trainees!" },
   { keys:["pray","prayer","bless","struggle","need help"], reply:'🙏 We\'d love to pray for you! Drop it in our <a href="https://forms.gle/M6q2qT2wRfyZ9fyo7" target="_blank" rel="noopener">prayer form</a> — our team prays weekly. Or see the <a href="contact.html">Contact page</a>.' },
   { keys:["contact","message","whatsapp","phone","talk","email","reach","cater"], reply:'📞 Easiest: the <a href="contact.html">Contact page</a> — <a href="https://forms.gle/yKgfLnRqDMRPCcc16" target="_blank" rel="noopener">contact form</a> for anything, <a href="https://forms.gle/M6q2qT2wRfyZ9fyo7" target="_blank" rel="noopener">prayer form</a> for prayer. We reply in 3 working days!' },
-  { keys:["graduate","pathway","future","founder","partner","village","mission","broad vision","echo"], reply:"🚀 Graduate → job / leader / chef / BroadVision café partner — launch village cafés, create jobs, make disciples. We're a sub-ministry of Echo From Above!" },
+  { keys:["graduate","grad","pathway","future","founder","partner","village","restaurant leader"], reply:"🚀 Graduate pathway — employment, restaurant leader, chef, or BroadVision café partner: launch new cafés in villages & churches, create jobs, make disciples. We're a sub-ministry of Echo From Above!" },
+  { keys:["business","business model","revenue","income","money","profit","franchise","affordable meals","community partnerships","funding","funded"], reply:"💼 Business model — affordable meals + training income + community partnerships, with future franchise / partner cafés as graduates mature." },
+  { keys:["long term","long-term","raise people","raise disciples","equipping","sending","kingdom","restore","expand"], reply:"🌟 Long-term — Cambodia is our first mission field. As graduates mature, they launch BroadVision cafés in their own villages, towns or regions — creating jobs, strengthening churches, making disciples. All guided by 'Feed My sheep.' (John 21:15-17)" },
   { keys:["mala","spicy","challenge","level"], reply:"🌶️ Mala 0–5. New? Start 1–2. Pro? 4–5. Level 5 = free drink if you finish!" },
-  { keys:["laksa","recommend","best","first","try","broth"], reply:"🦐 First-timer? Laksa + mee kia + prawn. Comfort? Tomato Collagen. Light? Mushroom Herbal. Build it on Menu page — base $6.90!" },
+  { keys:["laksa","recommend","best","first","try","broth"], reply:"🦐 First-timer? Laksa + mee kia + prawn. Comfort? Tomato Collagen. Light? Mushroom Herbal. Build it on the <a href=\"menu.html\">Menu page</a> — base $6.90!" },
   { keys:["veg","vegetarian","halal","bento"], reply:"🥬 Mushroom + vermicelli + veg! First 3 veg FREE in builder. Bento value meals from $5.90. Halal-friendly options — ask staff." },
   { keys:["price","cost","cheap","budget"], reply:"💰 Base $6.90 (broth+noodles+3 free veg). Most $9–12. Feast for Two $19.90. Community bowl $4.90 ❤️" },
   { keys:["noodle","ramen","udon","mee","topping"], reply:"🍜 5 noodles: ramen, mee kia, vermicelli, udon, knife-cut. 20+ toppings $0.80–$2.50. Mix two noodles if torn!" },
   { keys:["hi","hello","hey"], reply:"Hi! I'm Slurpy 🍲 DIY bowl help or 2-Year Traineeship info?" },
   { keys:["thank"], reply:"Slurp you later! 🍜❤️" },
 ];
-const CHAT_FALLBACK = "I know DIY bowls + the 2-Year GROW Traineeship 🎓 Try 'mala level 3', 'how long is training?' or 'GROW'.";
+const CHAT_FALLBACK = "🤔 Hmm, that's beyond my bowl-brain for now — still learning! You can still send a message at <a href=\"https://wa.me/6582683372\" target=\"_blank\" rel=\"noopener\">WhatsApp +65 82683372</a> and we'll reply to you as soon as possible 💬";
 function botReply(text){
   const t = text.toLowerCase();
   for (const item of CHAT_QA) {
@@ -151,35 +166,84 @@ function botReply(text){
   return CHAT_FALLBACK;
 }
 // Guided suggestions (Singtel-style): tap a chip to lead the chat.
-// ★ To change chips, edit QUICK below: { label (button), ask (question sent) } ★
+// Each chip can reveal follow-up chips (options), deepening the guided flow.
+// ★ To change chips, edit QUICK below: { label (button), ask (question sent), options (follow-up chips) } ★
 const QUICK = [
-  { label:"🍜 Build a bowl", ask:"What do you recommend for first-timers?" },
-  { label:"🎓 Traineeship", ask:"Tell me about the 2-Year Traineeship" },
-  { label:"📍 Locations", ask:"Where are you located?" },
-  { label:"🙏 Prayer", ask:"I want to request prayer" },
-  { label:"📞 Contact", ask:"How do I contact you?" },
+  { label:"🍜 Build a bowl", ask:"What do you recommend for first-timers?", options:[
+    { label:"Which broth?", ask:"Which broth is good?" },
+    { label:"Noodles & toppings", ask:"What noodles and toppings are there?" },
+    { label:"Spice levels", ask:"How spicy is Mala?" },
+    { label:"↩ Main menu" },
+  ]},
+  { label:"🎓 Traineeship", ask:"Tell me about the 2-Year Traineeship", options:[
+    { label:"What is GROW?", ask:"What is GROW?" },
+    { label:"Salary & allowance", ask:"How much salary and allowance?" },
+    { label:"Apply now", ask:"How do I apply for the traineeship?" },
+    { label:"↩ Main menu" },
+  ]},
+  { label:"🌟 Mission & plan", ask:"What's the Academy's vision?", options:[
+    { label:"Vision", ask:"What is the academy's vision?" },
+    { label:"Roadmap / phases", ask:"What are the phases and timeline?" },
+    { label:"After graduation", ask:"What happens after graduation?" },
+    { label:"Business model", ask:"How does the business model work?" },
+    { label:"Echo From Above", ask:"What is Echo From Above?" },
+    { label:"↩ Main menu" },
+  ]},
+  { label:"📍 Locations", ask:"Where are you located?", options:[
+    { label:"Singapore HQ", ask:"What does the Singapore HQ do?" },
+    { label:"Siem Reap café", ask:"What is the Siem Reap training café like?" },
+    { label:"Hours", ask:"What are your opening hours?" },
+    { label:"Singapore vs Siem Reap", ask:"Singapore vs Siem Reap?" },
+    { label:"↩ Main menu" },
+  ]},
+  { label:"🙏 Prayer", ask:"I want to request prayer", options:[
+    { label:"Prayer form", ask:"Where is the prayer form?" },
+    { label:"↩ Main menu" },
+  ]},
+  { label:"📞 Contact", ask:"How do I contact you?", options:[
+    { label:"Contact page", ask:"Where is the contact page?" },
+    { label:"Catering", ask:"Do you cater events?" },
+    { label:"↩ Main menu" },
+  ]},
 ];
 function initChat(){
   const f=$("#chatFab"), b=$("#chatbox"); if(!f||!b) return;
   f.onclick=()=>b.classList.toggle("open");
   const log=$("#chatlog");
-  // build chips once, above the input
-  if(!$("#quickReplies")){
-    const bar=document.createElement("div");
+  // build chips bar once, above the input
+  let bar=$("#quickReplies");
+  if(!bar){
+    bar=document.createElement("div");
     bar.className="quick-replies"; bar.id="quickReplies";
-    bar.innerHTML=QUICK.map((q,i)=>`<button data-q="${i}">${q.label}</button>`).join("");
     b.insertBefore(bar, b.querySelector(".chatinput"));
-    bar.addEventListener("click",e=>{
-      const btn=e.target.closest("button"); if(!btn) return;
-      if(!b.classList.contains("open")) b.classList.add("open");
-      say(QUICK[+btn.dataset.q].ask);
-    });
   }
-  const say=(v)=>{
+  const render=(list)=>{
+    bar.innerHTML=list.map((q,i)=>`<button data-q="${i}">${q.label}</button>`).join("");
+    bar._list=list;
+  };
+  render(QUICK);
+  bar.addEventListener("click",e=>{
+    const btn=e.target.closest("button"); if(!btn) return;
+    const q=bar._list[+btn.dataset.q]; if(!q) return;
+    if(!b.classList.contains("open")) b.classList.add("open");
+    if(!q.ask){ render(QUICK); return; }
+    say(q.ask, q.options);
+  });
+  const typing=()=>{
+    const t=document.createElement("div"); t.className="msg bot typing"; t.textContent="…";
+    log.appendChild(t); log.scrollTop=log.scrollHeight; return t;
+  };
+  const say=(v, options)=>{
     v=(v||"").trim(); if(!v) return;
     log.insertAdjacentHTML("beforeend",`<div class="msg user">${v.replace(/</g,"&lt;")}</div>`);
     log.scrollTop=log.scrollHeight;
-    setTimeout(()=>{ log.insertAdjacentHTML("beforeend",`<div class="msg bot">${botReply(v)}</div>`); log.scrollTop=log.scrollHeight; },350);
+    const dots=typing();
+    setTimeout(()=>{
+      dots.remove();
+      log.insertAdjacentHTML("beforeend",`<div class="msg bot">${botReply(v)}</div>`);
+      log.scrollTop=log.scrollHeight;
+      if(options && options.length){ const bar=$("#quickReplies"); if(bar && bar._list) render(options); }
+    },450);
   };
   const send=()=>{ const i=$("#chatText"); say(i.value); i.value=""; };
   $("#chatSend").onclick=send; $("#chatText").addEventListener("keydown",e=>{ if(e.key==="Enter") send(); });
@@ -198,7 +262,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     bowl.noodle=NOODLES[Math.floor(Math.random()*NOODLES.length)];
     bowl.tops=new Set(["beef","enoki","quail"].sort(()=>Math.random()-.5).slice(0,2+Math.floor(Math.random()*2)));
     bowl.spice=1+Math.floor(Math.random()*3); $("#spice").value=bowl.spice; renderBuilder(); toast("AI picked your bowl ✨");
-  }));
+  });
   $("#addBowl") && ($("#addBowl").onclick=()=>{
     const label=`🍲 ${bowl.broth.name.split(" ")[0]}+${bowl.noodle.name}(S${bowl.spice}) x${bowl.tops.size}top`;
     addToCart(label,bowlPrice()); openCart();
