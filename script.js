@@ -63,8 +63,8 @@ function loadCart(){ try{cart=JSON.parse(localStorage.getItem("slurp_cart")||"{}
 function renderCart(){
   const box=$("#cartItems"); if(!box) return;
   const ks=Object.keys(cart);
-  box.innerHTML = ks.length ? ks.map(k=>{ const i=cart[k]; return `<div class="cart-row"><span>${i.label} × ${i.qty}</span><span>$${(i.price*i.qty).toFixed(2)} <button data-rm="${k}">✕</button></span></div>`; }).join("") : "<p>Empty. Build a bowl!</p>";
-  const t=$("#cartTotal"); if(t) t.textContent="$"+cartTotal().toFixed(2);
+  box.innerHTML = ks.length ? ks.map(k=>{ const i=cart[k]; return `<div class="cart-row"><span>${i.label} × ${i.qty}</span><span>US$${(i.price*i.qty).toFixed(2)} <button data-rm="${k}">✕</button></span></div>`; }).join("") : "<p>Empty. Build a bowl!</p>";
+  const t=$("#cartTotal"); if(t) t.textContent="US$"+cartTotal().toFixed(2);
   const c=$("#cartCountTop"); if(c) c.textContent=cartCount();
   $$("#cartItems [data-rm]").forEach(b=>b.onclick=()=>{ delete cart[b.dataset.rm]; saveCart(); renderCart(); });
 }
@@ -83,25 +83,25 @@ function bowlPrice(){
 }
 function renderBuilder(){
   const bg=$("#brothGrid"); if(!bg) return;
-  bg.innerHTML=BROTHS.map(b=>`<div class="opt ${bowl.broth.id===b.id?'sel':''}" data-b="${b.id}"><div class="e">${b.emoji}</div><b>${b.name}</b><small>$${b.price.toFixed(2)} base</small></div>`).join("");
+  bg.innerHTML=BROTHS.map(b=>`<div class="opt ${bowl.broth.id===b.id?'sel':''}" data-b="${b.id}"><div class="e">${b.emoji}</div><b>${b.name}</b><small>US$${b.price.toFixed(2)} base</small></div>`).join("");
   $$("#brothGrid .opt").forEach(o=>o.onclick=()=>{ bowl.broth=BROTHS.find(b=>b.id===o.dataset.b); renderBuilder(); });
   const ng=$("#noodleGrid");
   ng.innerHTML=NOODLES.map(n=>`<div class="opt ${bowl.noodle.id===n.id?'sel':''}" data-n="${n.id}"><div class="e">${n.emoji}</div><b>${n.name}</b><small>incl.</small></div>`).join("");
   $$("#noodleGrid .opt").forEach(o=>o.onclick=()=>{ bowl.noodle=NOODLES.find(n=>n.id===o.dataset.n); renderBuilder(); });
   const tg=$("#toppingGrid");
-  tg.innerHTML=TOPPINGS.map(t=>`<div class="opt ${bowl.tops.has(t.id)?'sel':''}" data-t="${t.id}"><div class="e">${t.emoji}</div><b>${t.name}</b><small>$${t.price.toFixed(2)}${t.veg?' • veg':''}</small></div>`).join("");
+  tg.innerHTML=TOPPINGS.map(t=>`<div class="opt ${bowl.tops.has(t.id)?'sel':''}" data-t="${t.id}"><div class="e">${t.emoji}</div><b>${t.name}</b><small>US$${t.price.toFixed(2)}${t.veg?' • veg':''}</small></div>`).join("");
   $$("#toppingGrid .opt").forEach(o=>o.onclick=()=>{ const id=o.dataset.t; bowl.tops.has(id)?bowl.tops.delete(id):bowl.tops.add(id); renderBuilder(); });
   const spiceNames=["No Spice 😌","Mild Kick 🌶️","Medium 🔥","Extra Spicy 🥵","Dragon 🌋","MALA CHALLENGE 💀"];
   $("#spiceLabel").textContent=bowl.spice+" – "+spiceNames[bowl.spice];
   const tn=[...bowl.tops].map(id=>TOPPINGS.find(t=>t.id===id)?.name).filter(Boolean).join(", ")||"no toppings yet";
   $("#bowlSummary").textContent=`${bowl.broth.name} + ${bowl.noodle.name} + ${tn} • spice ${bowl.spice}`;
-  $("#bowlTotal").textContent="$"+bowlPrice().toFixed(2);
+  $("#bowlTotal").textContent="US$"+bowlPrice().toFixed(2);
 }
 
 // menu grid
 function renderMenu(f="all"){
   const g=$("#menuGrid"); if(!g) return;
-  g.innerHTML=MENU.filter(m=>f==="all"||m.cat===f).map(m=>`<div class="menu-item"><div class="top">${m.emoji}</div><div class="body"><h3>${m.name}<span>$${m.price.toFixed(2)}</span></h3><p>${m.desc}</p><div>${(m.tags||[]).map(t=>`<span class="tag ${t==='ai'?'ai':''}">${t}</span>`).join("")}</div><div style="height:8px"></div><button class="add-btn" data-add="${m.id}">Add +</button></div></div>`).join("");
+  g.innerHTML=MENU.filter(m=>f==="all"||m.cat===f).map(m=>`<div class="menu-item"><div class="top">${m.emoji}</div><div class="body"><h3>${m.name}<span>US$${m.price.toFixed(2)}</span></h3><p>${m.desc}</p><div>${(m.tags||[]).map(t=>`<span class="tag ${t==='ai'?'ai':''}">${t}</span>`).join("")}</div><div style="height:8px"></div><button class="add-btn" data-add="${m.id}">Add +</button></div></div>`).join("");
   $$("#menuGrid [data-add]").forEach(b=>b.onclick=()=>{ const m=MENU.find(x=>x.id==b.dataset.add); addToCart(m.emoji+" "+m.name,m.price); });
 }
 
@@ -129,7 +129,7 @@ function initQuiz(){
 const CHAT_QA = [
   // PAGE NAVIGATION — ask about a page → short description + link to go there
   { keys:["menu page","menu.html","see menu","view menu","show menu","what's on the menu","what is on the menu","what do you sell","bowl builder","build your own bowl","what pages","what page"], reply:'🍜 <b>Menu page</b> — browse every set, the Build-a-Bowl builder, sides & prices. Tap a set to add it, or build your own. → <a href="menu.html">Open Menu</a>' },
-  { keys:["traineeship page","internship page","apply page","interns.html","trainee page"], reply:'🎓 <b>Traineeship page</b> — the 2-Year GROW traineeship explained: what you study, allowance, meals, and the big application form. → <a href="interns.html">Open Traineeship</a>' },
+  { keys:["traineeship page","internship page","apply page","interns.html","trainee page"], reply:'🎓 <b>Traineeship page</b> — the 2-Year GROW traineeship explained: what you study, allowance, meals, and the big enquiry form. → <a href="interns.html">Open Traineeship</a>' },
   { keys:["about page","about.html","about us","who are you","who we are","our story","our mission"], reply:'💛 <b>About page</b> — who Kingdom Livelihood Academy is, our mission, and the Singapore + Siem Reap story behind the café. → <a href="about.html">Open About</a>' },
   { keys:["contact page","reach us page","message page"], reply:'📞 <b>Contact page</b> — contact form, prayer form, WhatsApp, catering & how to find us. → <a href="contact.html">Open Contact</a>' },
   { keys:["home page","go home","index.html","back to home","main page","landing page"], reply:'🏠 <b>Home</b> — the café intro, our story, and quick links to Menu, Traineeship, About & Contact. → <a href="index.html">Back to Home</a>' },
@@ -137,7 +137,7 @@ const CHAT_QA = [
   { keys:["vision","mission","transform lives","purpose","why do you exist","why this cafe","mission statement"], reply:"🌟 Vision — to transform lives through vocational training, entrepreneurship, discipleship + sustainable livelihoods. We exist to raise people, not just run cafés!" },
   { keys:["phase","phases","timeline","roadmap","months","budget","launch","plan to start"], reply:"🗓️ Phase 1 (Months 1–3): Singapore HQ, curriculum, handbook, SOPs, registration, admin, partnerships. Phase 2 (M4–6): Siem Reap café secured, renovated, equipped, staff trained, trial ops. Phase 3 (M7–12): recruit via local churches, first intake, programme launched!" },
   { keys:["business","business model","revenue","income","money","profit","franchise","affordable meals","community partnerships","funding","funded"], reply:"💼 Business model — affordable meals + training income + community partnerships, with future franchise / partner cafés as graduates mature." },
-  { keys:["2-year","trainee","intern","hire","job","salary","pay","earn","study","curriculum","subject"], reply:"🎓 2-Year Traineeship! Study English, Math, Customer Service, Café Operations, Inventory, Administration, Entrepreneurship, Leadership + Biblical Discipleship. Weekly fellowship is compulsory. Allowance + meals + certificate → chef / leader / village café partner. Apply on the <a href=\"interns.html\">Traineeship page</a>!" },
+  { keys:["2-year","trainee","intern","hire","job","salary","pay","earn","study","curriculum","subject"], reply:"🎓 2-Year Traineeship! Study English, Math, Customer Service, Café Operations, Inventory, Administration, Entrepreneurship, Leadership + Biblical Discipleship. Weekly fellowship is compulsory. Allowance + meals + certificate → chef / leader / village café partner. Enquire on the <a href=\"interns.html\">Traineeship page</a>!" },
   { keys:["grow","guide","raise","operate","walk","stages"], reply:"🌱 G.R.O.W. — Guide (faith, mentoring & discipleship), Raise (life skills, entrepreneurship, leadership), Operate (hands-on real café shifts), Walk (mature into leaders, disciple-makers, future café owners). All 4 stages for every trainee!" },
   { keys:["singapore hq","headquarters","hq","administration","admin","certificates","student records","quality assurance","handbook","sop"], reply:'<img class="flagic" src="https://flagcdn.com/w40/sg.png" alt="Singapore flag" /> Singapore HQ = the sending & equipping centre. Runs administration, curriculum & handbook, student records, certificates, finance & partnerships, and quality assurance.' },
   { keys:["siem reap cafe","siem reap café","training cafe","training café","first operational","chef","floor staff","community outreach","mini hotpot","bento"], reply:'<img class="flagic" src="https://flagcdn.com/w40/kh.png" alt="Cambodia flag" /> Siem Reap Training Café = our first operational café: DIY mini hotpot sets + bento value meals, practical chef & floor-staff training, community outreach, and a local church partner.' },
@@ -150,10 +150,10 @@ const CHAT_QA = [
   { keys:["business","business model","revenue","income","money","profit","franchise","affordable meals","community partnerships","funding","funded"], reply:"💼 Business model — affordable meals + training income + community partnerships, with future franchise / partner cafés as graduates mature." },
   { keys:["long term","long-term","raise people","raise disciples","equipping","sending","kingdom","restore","expand"], reply:"🌟 Long-term — Cambodia is our first mission field. As graduates mature, they launch BroadVision cafés in their own villages, towns or regions — creating jobs, strengthening churches, making disciples. All guided by 'Feed My sheep.' (John 21:15-17)" },
   { keys:["mala","spicy","challenge","level"], reply:"🌶️ Mala 0–5. New? Start 1–2. Pro? 4–5. Level 5 = free drink if you finish!" },
-  { keys:["laksa","recommend","best","first","try","broth"], reply:"🦐 First-timer? Laksa + mee kia + prawn. Comfort? Tomato Collagen. Light? Mushroom Herbal. Build it on the <a href=\"menu.html\">Menu page</a> — base $6.90!" },
-  { keys:["veg","vegetarian","halal","bento"], reply:"🥬 Mushroom + vermicelli + veg! First 3 veg FREE in builder. Bento value meals from $5.90. Halal-friendly options — ask staff." },
-  { keys:["price","cost","cheap","budget"], reply:"💰 Base $6.90 (broth+noodles+3 free veg). Most $9–12. Feast for Two $19.90. Community bowl $4.90 ❤️" },
-  { keys:["noodle","ramen","udon","mee","topping"], reply:"🍜 5 noodles: ramen, mee kia, vermicelli, udon, knife-cut. 20+ toppings $0.80–$2.50. Mix two noodles if torn!" },
+  { keys:["laksa","recommend","best","first","try","broth"], reply:"🦐 First-timer? Laksa + mee kia + prawn. Comfort? Tomato Collagen. Light? Mushroom Herbal. Build it on the <a href=\"menu.html\">Menu page</a> — base US$6.90!" },
+  { keys:["veg","vegetarian","halal","bento"], reply:"🥬 Mushroom + vermicelli + veg! First 3 veg FREE in builder. Bento value meals from US$5.90. Halal-friendly options — ask staff." },
+  { keys:["price","cost","cheap","budget"], reply:"💰 Base US$6.90 (broth+noodles+3 free veg). Most US$9–12. Feast for Two US$19.90. Community bowl US$4.90 ❤️" },
+  { keys:["noodle","ramen","udon","mee","topping"], reply:"🍜 5 noodles: ramen, mee kia, vermicelli, udon, knife-cut. 20+ toppings US$0.80–US$2.50. Mix two noodles if torn!" },
   { keys:["hi","hello","hey"], reply:"Hi! I'm Slurpy 🍲 DIY bowl help or 2-Year Traineeship info?" },
   { keys:["thank"], reply:"Slurp you later! 🍜❤️" },
 ];
@@ -178,7 +178,7 @@ const QUICK = [
   { label:"🎓 Traineeship", ask:"Tell me about the 2-Year Traineeship", options:[
     { label:"What is GROW?", ask:"What is GROW?" },
     { label:"Salary & allowance", ask:"How much salary and allowance?" },
-    { label:"Apply now", ask:"How do I apply for the traineeship?" },
+    { label:"Enquire now", ask:"How do I apply for the traineeship?" },
     { label:"↩ Main menu" },
   ]},
   { label:"🌟 Mission & plan", ask:"What's the Academy's vision?", options:[
@@ -271,5 +271,5 @@ document.addEventListener("DOMContentLoaded",()=>{
   $("#openCartTop") && ($("#openCartTop").onclick=openCart);
   $("#closeCart") && ($("#closeCart").onclick=closeCart);
   $("#overlay") && ($("#overlay").onclick=closeCart);
-  $("#checkoutBtn") && ($("#checkoutBtn").onclick=()=>{ if(!cartCount()) return toast("Tray empty!"); toast("Demo checkout $"+cartTotal().toFixed(2)+" — connect payment later!"); });
+  $("#checkoutBtn") && ($("#checkoutBtn").onclick=()=>{ if(!cartCount()) return toast("Tray empty!"); toast("Demo checkout US$"+cartTotal().toFixed(2)+" — connect payment later!"); });
 });
