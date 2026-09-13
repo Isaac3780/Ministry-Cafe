@@ -84,6 +84,8 @@ h1,h2,h3,h4 { font-family:var(--font-head); color:var(--char); line-height:1.25;
 .hero-content p { color:rgba(255,255,255,.94); font-size:1.1rem; margin-bottom:26px; max-width:660px; margin-left:auto; margin-right:auto; text-shadow:0 1px 8px rgba(80,30,20,.45); }
 .hero-badges { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; }
 .hero-badges span { background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.28); padding:7px 14px; border-radius:50px; font-size:.82rem; }
+.flagic { width:1.15em; height:1.15em; vertical-align:-0.2em; border-radius:2px; box-shadow:0 0 0 1px rgba(0,0,0,.12); }
+.card .icon img { width:2.2rem; height:2.2rem; border-radius:4px; box-shadow:0 0 0 1px rgba(0,0,0,.1); }
 .btn { display:inline-block; padding:13px 30px; border-radius:50px; font-weight:800; font-size:.95rem; cursor:pointer; border:2px solid transparent; transition:.25s; }
 .btn-chili { background:var(--chili); color:#fff; }
 .btn-chili:hover { background:var(--chili-dark); transform:translateY(-2px); box-shadow:0 10px 22px rgba(193,39,45,.45); }
