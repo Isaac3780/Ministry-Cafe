@@ -62,8 +62,10 @@ h1,h2,h3,h4 { font-family:var(--font-head); color:var(--char); line-height:1.25;
 .nav-links a:hover, .nav-links a.active { background:var(--chili); color:#fff; }
 .nav-links a.hire { background:#fff; color:#211114; font-weight:800; }
 .navbar.scrolled .nav-links a.hire { background:var(--chili); color:#fff; }
-.nav-links a.back { border:1px solid rgba(255,255,255,.4); font-size:.85rem; }
-.navbar.scrolled .nav-links a.back { border-color:rgba(33,17,20,.35); }
+.nav-links a.back { background:var(--broth); color:#211114; font-weight:800; border:none; font-size:.98rem; padding:11px 24px; border-radius:50px; letter-spacing:.2px; box-shadow:0 1px 0 rgba(255,255,255,.18) inset; }
+.nav-links a.back:hover { background:var(--broth-2); color:#211114; }
+.navbar.scrolled .nav-links a.back { background:var(--broth); color:#211114; }
+.navbar.scrolled .nav-links a.back:hover { background:var(--broth-2); color:#211114; }
 .hamburger { display:none; background:none; border:none; cursor:pointer; padding:6px; }
 .hamburger span { display:block; width:24px; height:3px; background:var(--cream); margin:5px 0; border-radius:3px; }
 
@@ -270,12 +272,14 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .nav-inner .nav-links { flex-wrap:nowrap; }
 .nav-inner .nav-links a { white-space:nowrap; }
 
-@media (max-width: 860px) {
+@media (max-width: 1200px) {
   .hamburger { display:block; }
   .nav-links { position:absolute; top:100%; left:0; right:0; flex-direction:column; background:var(--cream); padding:10px 20px 20px; gap:4px; transform:translateY(-150%); transition:transform .3s; align-items:stretch; border-bottom:1px solid #f0e3d2; box-shadow:0 12px 24px rgba(92,58,51,.10); }
   .nav-links.open { transform:translateY(0); }
   .navbar.scrolled .nav-links a { color:var(--char); }
   .navbar.scrolled .nav-links a:hover, .navbar.scrolled .nav-links a.active { background:var(--chili); color:#fff; }
+}
+@media (max-width: 860px) {
   .feature { grid-template-columns:1fr; gap:30px; }
   .cards, .steps, .steps.steps-4, .perks, .role-grid, .role-grid.role-grid-4, .cards.cards-2, .menu-grid { grid-template-columns:1fr; }
   .cards.cards-2 { max-width:none; }
