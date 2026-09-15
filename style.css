@@ -61,7 +61,7 @@ h1,h2,h3,h4 { font-family:var(--font-head); color:var(--char); line-height:1.25;
 .nav-links a { display:block; padding:9px 14px; color:var(--cream); border-radius:8px; font-size:.93rem; transition:background .2s, color .2s; }
 .nav-links a:hover, .nav-links a.active { background:var(--chili); color:#fff; }
 .nav-links a.hire { background:#fff; color:#211114; font-weight:800; }
-.navbar.scrolled .nav-links a.hire { background:#fff; color:#211114; border:2px solid var(--chili); }
+.navbar.scrolled .nav-links a.hire { background:#fff; color:#211114; }
 .nav-links a.back { background:var(--broth); color:#211114; font-weight:800; border:none; font-size:.98rem; padding:11px 24px; border-radius:50px; letter-spacing:.2px; box-shadow:0 1px 0 rgba(255,255,255,.18) inset; }
 .nav-links a.back:hover { background:var(--broth-2); color:#211114; }
 .navbar.scrolled .nav-links a.back { background:var(--broth); color:#211114; }
