@@ -273,6 +273,7 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .nav-inner .nav-links a { white-space:nowrap; }
 
 @media (max-width: 1200px) {
+  .nav-inner { padding:0 26px; gap:20px; height:66px; }
   .hamburger { display:block; }
   .nav-links { position:absolute; top:100%; left:0; right:0; flex-direction:column; background:var(--cream); padding:10px 20px 20px; gap:4px; transform:translateY(-150%); transition:transform .3s; align-items:stretch; border-bottom:1px solid #f0e3d2; box-shadow:0 12px 24px rgba(92,58,51,.10); }
   .nav-links.open { transform:translateY(0); }
@@ -280,11 +281,47 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
   .navbar.scrolled .nav-links a:hover, .navbar.scrolled .nav-links a.active { background:var(--chili); color:#fff; }
 }
 @media (max-width: 860px) {
-  .feature { grid-template-columns:1fr; gap:30px; }
+  .nav-inner { padding:0 20px; gap:14px; }
+  .feature { grid-template-columns:1fr; gap:26px; }
+  .feature h3 { font-size:1.6rem; }
   .cards, .steps, .steps.steps-4, .perks, .role-grid, .role-grid.role-grid-4, .cards.cards-2, .menu-grid { grid-template-columns:1fr; }
   .cards.cards-2 { max-width:none; }
-  .hero-content h1 { font-size:2.4rem; }
+  .hero-content h1 { font-size:2.3rem; }
+  .section-title h2 { font-size:1.9rem; }
   .form-row { grid-template-columns:1fr; }
-  .section { padding:60px 16px; }
+  .section { padding:56px 16px; }
   .bill { flex-direction:column; align-items:stretch; text-align:center; }
+  .filter-bar { gap:8px; }
+  .perk, .role, .step { padding:22px 18px; }
+}
+@media (max-width: 600px) {
+  .nav-socials { display:none; }
+  .recruit-banner { font-size:.84rem; padding:10px 12px; }
+  .chat-fab { width:54px; height:54px; font-size:1.5rem; }
+}
+@media (max-width: 480px) {
+  .nav-inner { padding:0 16px; gap:12px; height:60px; }
+  .nav-logo { font-size:1.1rem; }
+  .nav-logo .cup { width:34px; height:34px; font-size:1.2rem; border-radius:10px; }
+  .hero { min-height:60vh; padding:80px 16px 50px; }
+  .hero-content h1 { font-size:2rem; }
+  .hero-content p { font-size:1rem; margin-bottom:20px; }
+  .hero-kicker { font-size:.7rem; letter-spacing:2px; }
+  .hero-badges span { padding:6px 11px; font-size:.75rem; }
+  .section-title h2 { font-size:1.8rem; }
+  .section-title p { font-size:.95rem; }
+  .section { padding:48px 16px; }
+  .feature .imgbox { min-height:220px; font-size:4rem; }
+  .card-body h3, .step h3 { font-size:1.05rem; }
+  .card-body p, .step p { font-size:.88rem; }
+  .btn { padding:12px 22px; font-size:.9rem; }
+  .menu-item .top { height:118px; font-size:2.6rem; }
+  .builder, .quiz, .form { padding:24px 18px; }
+  .form { padding:26px 18px; }
+  .schedule { display:block; overflow-x:auto; white-space:nowrap; }
+  .hours { padding:20px 16px; }
+  .footer-grid { grid-template-columns:1fr; gap:26px; }
+  .marquee { font-size:.72rem; }
+  .bill .total { font-size:1.3rem; }
+  .toast { white-space:nowrap; }
 }
