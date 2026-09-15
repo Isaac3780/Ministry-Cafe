@@ -273,7 +273,7 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .nav-inner .nav-links a { white-space:nowrap; }
 
 @media (max-width: 1200px) {
-  .nav-inner { padding:0 26px; gap:20px; height:66px; }
+  .nav-inner { padding:0 26px; gap:20px; height:66px; justify-content:space-between; }
   .hamburger { display:block; }
   .nav-links { position:absolute; top:100%; left:0; right:0; flex-direction:column; background:var(--cream); padding:10px 20px 20px; gap:4px; transform:translateY(-150%); transition:transform .3s; align-items:stretch; border-bottom:1px solid #f0e3d2; box-shadow:0 12px 24px rgba(92,58,51,.10); }
   .nav-links.open { transform:translateY(0); }
