@@ -338,3 +338,9 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
   .nav-inner .nav-links::-webkit-scrollbar { display:none; }
   .nav-links a { padding:8px 10px; font-size:.84rem; }
 }
+
+/* logo: icon + words together inside one orange box */
+.nav-logo .logo-box { display:flex; align-items:center; gap:10px; background:linear-gradient(135deg,var(--chili),var(--broth)); border-radius:14px; padding:7px 16px 7px 10px; }
+.nav-logo .logo-icon { font-size:1.6rem; line-height:1; }
+.nav-logo .logo-words { font-family:var(--font-head); color:#fff; font-size:1.15rem; line-height:1.15; white-space:nowrap; }
+.nav-logo .logo-words small { display:block; font-family:var(--font-body); font-size:.6rem; letter-spacing:2px; color:#ffe9c4; font-weight:800; }
