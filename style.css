@@ -378,7 +378,7 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .bv-places .place{background:var(--bvc-cream);border:3px solid var(--bvc-line);border-radius:22px;padding:1.9rem 1.6rem;display:flex;flex-direction:column}
 .bv-places .place h3{font-family:var(--bvc-d);font-weight:800;line-height:1.02;letter-spacing:-.01em;font-size:2rem;margin-bottom:.2rem;color:var(--bvc-ink)}
 .bv-places .place-top{margin-bottom:1.2rem}
-.bv-places .pin{width:38px;height:38px;display:block;color:var(--bvc-olive);margin-bottom:.6rem}
+.bv-places .pin{width:26px;height:26px;display:block;color:var(--bvc-olive);margin-bottom:.6rem}
 .bv-places .pin svg{width:100%;height:100%}
 .bv-places .pin-hot{color:var(--bvc-clay)}
 .bv-places .place-role{font-family:var(--bvc-h);font-size:1.45rem;font-weight:700;color:var(--bvc-clay);margin:0 0 1rem}
