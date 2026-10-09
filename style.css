@@ -67,6 +67,8 @@ h1,h2,h3,h4 { font-family:var(--font-head); color:var(--char); line-height:1.25;
 .navbar.scrolled .nav-links a.back { background:var(--broth); color:#211114; }
 .navbar.scrolled .nav-links a.back:hover { background:var(--broth-2); color:#211114; }
 .hamburger { display:none; background:none; border:none; cursor:pointer; padding:6px; }
+/* fit 7 nav links on desktop */
+.nav-links a { padding:9px 11px; font-size:.88rem; }
 .hamburger span { display:block; width:24px; height:3px; background:var(--cream); margin:5px 0; border-radius:3px; }
 
 /* Hero - hotpot (lighter overlay so the photo shines through) */
@@ -328,4 +330,11 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
   .marquee { font-size:.72rem; }
   .bill .total { font-size:1.3rem; }
   .toast { white-space:nowrap; }
+}
+
+/* overflow guard: 7 links on smaller laptops scroll instead of breaking the row */
+@media (max-width: 1150px) {
+  .nav-inner .nav-links { overflow-x:auto; scrollbar-width:none; }
+  .nav-inner .nav-links::-webkit-scrollbar { display:none; }
+  .nav-links a { padding:8px 10px; font-size:.84rem; }
 }

@@ -127,6 +127,8 @@ function initQuiz(){
 // put trigger words in keys, answer in reply. First match wins,
 // so keep specific topics ABOVE general ones. ★
 const CHAT_QA = [
+  { keys:["150","fee","schedule","timetable","enrol","cjs"], reply:"📖 Livelihood English: 7 weeks, once a week, 1.5 hours online, SGD $150. Certificate issued in Singapore (miss 2 lessons = no certificate). Full schedule on enquiry — see the <a href=\"english.html\">English page</a> or <a href=\"contact.html\">contact us</a>!" },
+  { keys:["english","livelihood"], reply:"📖 CJS LINES Livelihood English: 7-week online course (1.5 hrs/week) for conversation, listening, reading + vocational English. SGD $150, certificate included. Basic English is enough — details on the <a href=\"english.html\">English page</a>!" },
   // PAGE NAVIGATION — ask about a page → short description + link to go there
   { keys:["menu page","menu.html","see menu","view menu","show menu","what's on the menu","what is on the menu","what do you sell","bowl builder","build your own bowl","what pages","what page"], reply:'🍜 <b>Menu page</b> — browse every set, the Build-a-Bowl builder, sides & prices. Tap a set to add it, or build your own. → <a href="menu.html">Open Menu</a>' },
   { keys:["traineeship page","internship page","apply page","interns.html","trainee page"], reply:'🎓 <b>Traineeship page</b> — the 2-Year GROW traineeship explained: what you study, allowance, meals, and the big enquiry form. → <a href="interns.html">Open Traineeship</a>' },
@@ -169,6 +171,7 @@ function botReply(text){
 // Each chip can reveal follow-up chips (options), deepening the guided flow.
 // ★ To change chips, edit QUICK below: { label (button), ask (question sent), options (follow-up chips) } ★
 const QUICK = [
+  { label:"📖 English", ask:"Tell me about the Livelihood English programme" },
   { label:"🍜 Build a bowl", ask:"What do you recommend for first-timers?", options:[
     { label:"Which broth?", ask:"Which broth is good?" },
     { label:"Noodles & toppings", ask:"What noodles and toppings are there?" },
