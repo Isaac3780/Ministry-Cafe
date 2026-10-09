@@ -280,14 +280,29 @@ document.addEventListener("DOMContentLoaded",()=>{
 // transplanted scroll-reveal for the Two Houses section (safe: shows all if anything fails)
 (function(){
   try{
-    var els=document.querySelectorAll(".bv-places .reveal");
+    var els=document.querySelectorAll(".bv-places .reveal, .bv-grow .reveal");
     if(!els.length) return;
     var showAll=function(){ for(var i=0;i<els.length;i++) els[i].classList.add("is-in"); };
     if(!("IntersectionObserver" in window)){ showAll(); return; }
     var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("is-in"); io.unobserve(e.target); } }); },{threshold:.12});
     for(var j=0;j<els.length;j++) io.observe(els[j]);
   }catch(err){
-    var all=document.querySelectorAll(".bv-places .reveal");
+    var all=document.querySelectorAll(".bv-places .reveal, .bv-grow .reveal");
     for(var k=0;k<all.length;k++) all[k].classList.add("is-in");
   }
+})();
+
+// transplanted GROW accordion (home section only)
+(function(){
+  try{
+    var scope=document.querySelector(".bv-grow"); if(!scope) return;
+    var cards=Array.prototype.slice.call(scope.querySelectorAll(".grow-card"));
+    cards.forEach(function(card){
+      card.addEventListener("click",function(){
+        var was=card.classList.contains("is-open");
+        cards.forEach(function(c){ c.classList.remove("is-open"); c.setAttribute("aria-expanded","false"); });
+        if(!was){ card.classList.add("is-open"); card.setAttribute("aria-expanded","true"); }
+      });
+    });
+  }catch(err){}
 })();
