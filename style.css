@@ -451,3 +451,11 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .bv-pull cite{font-family:"Caveat","Segoe Script",cursive;font-size:1.5rem;font-weight:700;color:#2A1A10;}
 .bv-pull.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1);}
 .bv-pull.reveal.is-in{opacity:1;transform:none;}
+
+/* home split hero: words left, circular dish right, interior backdrop */
+.hero-home{background-image:linear-gradient(rgba(20,10,8,.78), rgba(20,10,8,.55)),url('photos/hero-cafe-interior.jpg');display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;text-align:left;}
+.hero-home .hero-content{margin:0;max-width:600px;}
+.hero-home .hero-content p{margin-left:0;margin-right:0;}
+.hero-home .hero-badges{justify-content:flex-start;}
+.hero-dish{width:min(380px,80vw);aspect-ratio:1;border-radius:50%;padding:18px;background:var(--cream);box-shadow:0 24px 60px rgba(0,0,0,.45);overflow:hidden;flex:0 0 auto;}
+.hero-dish img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;}
