@@ -466,3 +466,6 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .hero-home .btn-outline:hover{background:#2A1A10;color:#fff;}
 .hero-dish{width:min(400px,82vw);border-radius:28px;overflow:hidden;flex:0 0 auto;box-shadow:0 24px 60px rgba(74,26,10,.30);animation:float 6s ease-in-out infinite;}
 .hero-dish img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;}
+
+/* hero dish sits left of the words */
+.hero-home .hero-dish{order:-1;}
