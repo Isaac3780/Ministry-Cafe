@@ -470,8 +470,8 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 /* hero dish sits left of the words */
 .hero-home .hero-dish{order:-1;}
 
-/* hero group hugs the left */
-.hero-home{justify-content:flex-start;}
+/* hero group centered: equal spacers left and right */
+.hero-home{justify-content:center;}
 
 /* words overlap the ramen photo edge */
 .hero-home .hero-dish{margin-right:-90px;}
