@@ -474,7 +474,7 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .hero-home{justify-content:center;}
 
 /* words overlap the ramen photo edge */
-.hero-home .hero-dish{margin-right:-32px;}
+.hero-home .hero-dish{margin-right:-16px;}
 .hero-home .hero-content{position:relative;z-index:1;}
 .hero-home .hero-content h1{text-shadow:0 2px 14px rgba(255,253,248,.95), 0 0 4px rgba(255,253,248,.9);}
 .hero-home .hero-content p{text-shadow:0 1px 10px rgba(255,253,248,.95);}
