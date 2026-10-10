@@ -75,7 +75,7 @@ h1,h2,h3,h4 { font-family:var(--font-head); color:var(--char); line-height:1.25;
 .hero {
   position:relative; min-height:68vh; display:flex; align-items:center; justify-content:center;
   text-align:center; color:#fff; padding:90px 20px 70px;
-  background-image: linear-gradient(rgba(94,42,32,.40), rgba(220,120,60,.25)), url('https://commons.wikimedia.org/wiki/Special:FilePath/Budae_jjigae,_Hoho_Korean_Restaurant,_Singapore_-_20160911.jpg?width=1920'); /* free photo: Wikimedia Commons — budae jjigae, Singapore */
+  background-image: linear-gradient(rgba(94,42,32,.40), rgba(220,120,60,.25)), url('photos/hero-mini-hotpot.jpg'); /* free photo: Wikimedia Commons — budae jjigae, Singapore */
   background-size:cover; background-position:center 45%; overflow:hidden;
 }
 .hero::after { content:"🍲"; position:absolute; font-size:22rem; opacity:.08; right:-30px; bottom:-70px; animation:steam 5s ease-in-out infinite; }
