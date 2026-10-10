@@ -441,3 +441,6 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 }
 .bv-grow .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1)}
 .bv-grow .reveal.is-in{opacity:1;transform:none}
+
+/* home GROW: halve the top/bottom whitespace */
+.bv-grow{padding-top:39px;padding-bottom:39px;}
