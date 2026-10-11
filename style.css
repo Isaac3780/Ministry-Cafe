@@ -95,8 +95,8 @@ h1,h2,h3,h4 { font-family:var(--font-head); color:var(--char); line-height:1.25;
 .btn-chili:hover { background:var(--chili-dark); transform:translateY(-2px); box-shadow:0 10px 22px rgba(193,39,45,.45); }
 .btn-broth { background:var(--broth); color:#1c1512; }
 .btn-broth:hover { background:#fbbf24; transform:translateY(-2px); }
-.btn-outline { border-color:#fff; color:#fff; }
-.btn-outline:hover { background:#fff; color:#1c1512; }
+.btn-outline { border-color:#2A1A10; color:#2A1A10; }
+.btn-outline:hover { background:#2A1A10; color:#fff; }
 .section-dark .btn-outline { border-color:var(--char); color:var(--char); }
 .section-dark .btn-outline:hover { background:var(--char); color:#fff; }
 .btn-dark { background:linear-gradient(135deg,#5c3a33,#83564c); color:#fff; }
