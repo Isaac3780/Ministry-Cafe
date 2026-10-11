@@ -357,6 +357,7 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 @media (max-width:640px) {
   .hero-badges { grid-template-columns:repeat(2, auto); gap:8px; }
   .hero-badges span:nth-child(n) { grid-column:auto; white-space:normal; text-align:center; }
+  .hero-badges span:nth-child(5) { grid-column:1 / -1; justify-self:center; }
 }
 
 /* ===== transplanted from B-the-counter: Two Houses section (scoped, nothing else touched) ===== */
