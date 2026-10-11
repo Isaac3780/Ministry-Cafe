@@ -74,20 +74,20 @@ h1,h2,h3,h4 { font-family:var(--font-head); color:var(--char); line-height:1.25;
 /* Hero - hotpot (lighter overlay so the photo shines through) */
 .hero {
   position:relative; min-height:68vh; display:flex; align-items:center; justify-content:center;
-  text-align:center; color:#fff; padding:90px 20px 70px;
-  background-image: linear-gradient(rgba(94,42,32,.40), rgba(220,120,60,.25)), url('photos/hero-mini-hotpot.jpg'); /* free photo: Wikimedia Commons — budae jjigae, Singapore */
+  text-align:center; color:#2A1A10; padding:90px 20px 70px;
+  background-image: linear-gradient(180deg,rgba(255,246,233,.93),rgba(255,246,233,.82)), url('photos/hero-cafe-interior.jpg');
   background-size:cover; background-position:center 45%; overflow:hidden;
 }
 .hero::after { content:"🍲"; position:absolute; font-size:22rem; opacity:.08; right:-30px; bottom:-70px; animation:steam 5s ease-in-out infinite; }
 @keyframes steam { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-18px) rotate(5deg)} }
 .hero-content { position:relative; z-index:1; max-width:880px; animation:fadeUp .9s ease both; }
 @keyframes fadeUp { from{opacity:0; transform:translateY(24px)} to{opacity:1; transform:none} }
-.hero-kicker { text-transform:uppercase; letter-spacing:4px; font-size:.78rem; color:var(--broth); margin-bottom:14px; font-weight:800; text-shadow:0 1px 8px rgba(80,30,20,.5); }
-.hero-content h1 { font-size:3.4rem; color:#fff; margin-bottom:16px; text-shadow:0 2px 14px rgba(80,30,20,.45), 0 4px 30px rgba(80,30,20,.4); }
-.hero-content h1 em { color:var(--broth); font-style:normal; }
-.hero-content p { color:rgba(255,255,255,.94); font-size:1.1rem; margin-bottom:26px; max-width:660px; margin-left:auto; margin-right:auto; text-shadow:0 1px 8px rgba(80,30,20,.45); }
+.hero-kicker { text-transform:uppercase; letter-spacing:4px; font-size:.78rem; color:var(--chili); margin-bottom:14px; font-weight:800; text-shadow:none; }
+.hero-content h1 { font-size:3.4rem; color:#2A1A10; margin-bottom:16px; text-shadow:none; }
+.hero-content h1 em { color:var(--chili); font-style:normal; }
+.hero-content p { color:#5b4a3f; font-size:1.1rem; margin-bottom:26px; max-width:660px; margin-left:auto; margin-right:auto; text-shadow:none; }
 .hero-badges { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; }
-.hero-badges span { background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.28); padding:7px 14px; border-radius:50px; font-size:.82rem; }
+.hero-badges span { background:rgba(255,255,255,.85); border:1px solid rgba(42,26,16,.15); padding:7px 14px; border-radius:50px; font-size:.82rem; color:#2A1A10; }
 .flagic { width:1.5em; height:1.1em; vertical-align:-0.2em; border-radius:2px; box-shadow:0 0 0 1px rgba(0,0,0,.12); }
 .card .icon img { width:2.9rem; height:2.2rem; border-radius:4px; box-shadow:0 0 0 1px rgba(0,0,0,.1); }
 .btn { display:inline-block; padding:13px 30px; border-radius:50px; font-weight:800; font-size:.95rem; cursor:pointer; border:2px solid transparent; transition:.25s; }
