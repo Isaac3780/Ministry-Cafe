@@ -314,6 +314,7 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
   .chat-fab { width:54px; height:54px; font-size:1.5rem; }
   .cta-pair { display:flex; gap:12px; align-items:stretch; }
   .cta-pair .btn { flex:1 1 0; margin-right:0 !important; padding:12px 8px; font-size:.85rem; text-align:center; }
+  .cta-pair .btn-outline { font-size:1.05rem; }
 }
 @media (max-width: 480px) {
   .nav-inner { padding:0 16px; gap:12px; height:60px; }
