@@ -481,3 +481,10 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 
 /* nudge hero frame left, text stays */
 .hero-home .hero-dish{position:relative;left:-24px;}
+
+/* chat fits small phones: no sideways scroll */
+.chatbox{width:min(340px,calc(100vw - 32px));right:16px;}
+.chatlog{overflow-x:hidden;}
+.msg{overflow-wrap:anywhere;word-break:break-word;}
+.chatlog a{overflow-wrap:anywhere;word-break:break-all;}
+.quick-replies button{max-width:100%;overflow:hidden;text-overflow:ellipsis;}
