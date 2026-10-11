@@ -40,19 +40,13 @@ h1,h2,h3,h4 { font-family:var(--font-head); color:var(--char); line-height:1.25;
 
 /* Nav — dark bar under banner, white once scrolled (always tracks) */
 .navbar { position:sticky; top:0; z-index:100; background:#211114; transition:background .3s, box-shadow .3s; }
-.navbar.scrolled { background:rgba(255,255,255,.97); box-shadow:0 2px 20px rgba(33,17,20,.12); }
-.navbar.scrolled .nav-logo { color:var(--char); }
-.navbar.scrolled .nav-logo small { color:var(--chili); }
-.navbar.scrolled .nav-links a { color:var(--char); }
-.navbar.scrolled .hamburger span { background:var(--char); }
+.navbar.scrolled { background:#211114; box-shadow:0 2px 20px rgba(0,0,0,.35); }
 .nav-logo { display:flex; align-items:center; gap:10px; color:#fff; font-family:var(--font-head); font-size:1.25rem; }
 .nav-logo .cup { width:40px; height:40px; border-radius:12px; background:linear-gradient(135deg,var(--chili),var(--broth)); display:grid; place-items:center; font-size:1.4rem; }
 .nav-logo small { display:block; font-family:var(--font-body); font-size:.66rem; letter-spacing:2px; text-transform:uppercase; color:var(--broth); font-weight:800; }
 .nav-socials { display:flex; align-items:center; gap:4px; padding-right:14px; border-right:1px solid rgba(255,255,255,.3); }
-.navbar.scrolled .nav-socials { border-right-color:rgba(33,17,20,.25); }
 .nav-socials a { display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; transition:background .2s, transform .2s; }
 .nav-socials a:hover { background:rgba(255,255,255,.15); transform:translateY(-2px); }
-.navbar.scrolled .nav-socials a:hover { background:rgba(33,17,20,.08); }
 .nav-socials a[aria-label="Instagram"] { color:#d62976; }
 .nav-socials a[aria-label="Facebook"] { color:#1877f2; }
 .nav-socials a[aria-label="Spotify"] { color:#1db954; }
@@ -61,11 +55,8 @@ h1,h2,h3,h4 { font-family:var(--font-head); color:var(--char); line-height:1.25;
 .nav-links a { display:block; padding:9px 14px; color:var(--cream); border-radius:8px; font-size:.93rem; transition:background .2s, color .2s; }
 .nav-links a:hover, .nav-links a.active { background:var(--chili); color:#fff; }
 .nav-links a.hire { background:#fff; color:#211114; font-weight:800; }
-.navbar.scrolled .nav-links a.hire { background:#fff; color:#211114; }
 .nav-links a.back { background:var(--broth); color:#211114; font-weight:800; border:none; font-size:.98rem; padding:11px 24px; border-radius:50px; letter-spacing:.2px; box-shadow:0 1px 0 rgba(255,255,255,.18) inset; }
 .nav-links a.back:hover { background:var(--broth-2); color:#211114; }
-.navbar.scrolled .nav-links a.back { background:var(--broth); color:#211114; }
-.navbar.scrolled .nav-links a.back:hover { background:var(--broth-2); color:#211114; }
 .hamburger { display:none; background:none; border:none; cursor:pointer; padding:6px; }
 /* fit 7 nav links on desktop */
 .nav-links a { padding:9px 11px; font-size:.88rem; }
