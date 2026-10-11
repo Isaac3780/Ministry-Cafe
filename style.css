@@ -17,8 +17,8 @@
   --font-body: "Inter", "Segoe UI", Arial, sans-serif;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { font-family:var(--font-body); background:var(--cream); background-image:radial-gradient(circle at 14% 8%, rgba(226,112,58,.10), transparent 44%), radial-gradient(circle at 88% 72%, rgba(92,110,61,.09), transparent 48%); background-attachment:fixed; color:var(--text); line-height:1.7; }
+html { scroll-behavior:smooth; overflow-x:hidden; }
+body { font-family:var(--font-body); background:var(--cream); background-image:radial-gradient(circle at 14% 8%, rgba(226,112,58,.10), transparent 44%), radial-gradient(circle at 88% 72%, rgba(92,110,61,.09), transparent 48%); background-attachment:fixed; color:var(--text); line-height:1.7; overflow-x:hidden; }
 img { max-width:100%; display:block; }
 a { color:var(--chili-dark); text-decoration:none; }
 h1,h2,h3,h4 { font-family:var(--font-head); color:var(--char); line-height:1.25; }
@@ -355,8 +355,8 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .hero-badges span { display:inline-flex; align-items:center; justify-content:center; gap:7px; white-space:nowrap; }
 .hero-badges img.flagic { width:22px; height:auto; border-radius:4px; display:block; }
 @media (max-width:640px) {
-  .hero-badges { grid-template-columns:repeat(2, auto); }
-  .hero-badges span:nth-child(n) { grid-column:auto; }
+  .hero-badges { grid-template-columns:repeat(2, auto); gap:8px; }
+  .hero-badges span:nth-child(n) { grid-column:auto; white-space:normal; text-align:center; }
 }
 
 /* ===== transplanted from B-the-counter: Two Houses section (scoped, nothing else touched) ===== */
