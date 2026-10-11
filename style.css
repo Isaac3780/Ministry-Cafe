@@ -457,9 +457,9 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .bv-pull cite{font-family:"Caveat","Segoe Script",cursive;font-size:1.5rem;font-weight:700;color:#2A1A10;}
 .bv-pull.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1);}
 .bv-pull.reveal.is-in{opacity:1;transform:none;}
-.bv-pull.verse{background:#3B4A26;}
-.bv-pull.verse p{color:#FFF6E9;}
-.bv-pull.verse cite{color:#FFF6E9;}
+.bv-pull.verse{background:#E8833A;}
+.bv-pull.verse p{color:#2A1A10;}
+.bv-pull.verse cite{color:#2A1A10;}
 
 @media (max-width:640px) {
   .bv-pull { margin:0 14px 1.8rem; padding:1.6rem 1.2rem; box-shadow:7px 7px 0 #2A1A10; }
