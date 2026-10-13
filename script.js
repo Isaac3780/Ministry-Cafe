@@ -292,17 +292,4 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
 })();
 
-// transplanted GROW accordion (home section only)
-(function(){
-  try{
-    var scope=document.querySelector(".bv-grow"); if(!scope) return;
-    var cards=Array.prototype.slice.call(scope.querySelectorAll(".grow-card"));
-    cards.forEach(function(card){
-      card.addEventListener("click",function(){
-        var was=card.classList.contains("is-open");
-        cards.forEach(function(c){ c.classList.remove("is-open"); c.setAttribute("aria-expanded","false"); });
-        if(!was){ card.classList.add("is-open"); card.setAttribute("aria-expanded","true"); }
-      });
-    });
-  }catch(err){}
-})();
+// GROW cards are now static (no accordion toggle)
