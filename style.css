@@ -446,7 +446,7 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .bv-grow .grow-panel{grid-area:panel;display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
 .bv-grow .grow-panel>*{overflow:hidden}
 .bv-grow .grow-body{display:block;font-size:1.03rem;color:var(--bvc-soft)}
-.bv-grow .grow-out{grid-area:out;justify-self:start;display:inline-block;font-family:var(--bvc-d);font-weight:700;font-size:.94rem;background:var(--bvc-olive);color:var(--bvc-cream);padding:.42rem .95rem;border-radius:99px}
+.bv-grow .grow-out{grid-area:out;justify-self:stretch;display:block;font-family:var(--bvc-d);font-weight:700;font-size:.94rem;background:var(--bvc-olive);color:var(--bvc-cream);padding:.42rem .95rem;border-radius:99px}
 .bv-grow .grow-card.is-open .grow-panel{grid-template-rows:1fr}
 .bv-grow .grow-card.is-open .grow-body{padding:1.1rem 1rem .3rem 0}
 @media (max-width:600px){
