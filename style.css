@@ -267,8 +267,10 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .nav-inner .nav-links a { white-space:nowrap; }
 
 @media (max-width: 1200px) {
-  .nav-inner { padding:0 26px; gap:20px; height:66px; justify-content:space-between; }
-  .hamburger { display:block; }
+  .nav-inner { padding:0 26px; gap:20px; height:66px; justify-content:flex-start; }
+  .nav-logo { order:-1; }
+  .hamburger { display:block; margin-left:auto; }
+  .nav-socials { padding-right:0; padding-left:12px; border-right:0; border-left:1px solid rgba(255,255,255,.3); }
   .nav-links { position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; background:var(--cream); padding:10px 20px 20px; gap:6px; transform:translateY(-150%); opacity:0; visibility:hidden; pointer-events:none; transition:transform .3s ease, opacity .3s ease; border-bottom:1px solid #f0e3d2; box-shadow:0 12px 24px rgba(92,58,51,.10); }
   .nav-links.open { transform:translateY(0); opacity:1; visibility:visible; pointer-events:auto; }
   .nav-links a { color:var(--char); background:#fff; border:1px solid #f0ddd0; }
@@ -288,7 +290,10 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 }
 @media (min-width: 1201px) {
   .nav-links a.back { margin-left:14px; }
+  /* tuck the social icons + divider in beside the Kingdom Academy logo */
+  .nav-socials { margin-right:-32px; }
 }
+
 @media (max-width: 860px) {
   .nav-inner { padding:0 20px; gap:14px; }
   .feature { grid-template-columns:1fr; gap:26px; }
@@ -520,3 +525,25 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .msg{overflow-wrap:anywhere;word-break:break-word;}
 .chatlog a{overflow-wrap:anywhere;word-break:break-all;}
 .quick-replies button{max-width:100%;overflow:hidden;text-overflow:ellipsis;}
+
+/* laptops (1201-1500px): keep the nav row from hugging / clipping at the left edge */
+@media (min-width: 1201px) and (max-width: 1500px) {
+  .nav-inner { padding:0 36px; gap:16px; }
+  .nav-socials { margin-right:-6px; gap:2px; }
+  .nav-socials a { width:28px; height:28px; }
+  .nav-links a { padding:9px 10px; font-size:.87rem; }
+  .nav-links a.back { padding:9px 16px; font-size:.92rem; }
+  .nav-logo .logo-box { padding:6px 12px 6px 9px; gap:8px; }
+  .nav-logo .logo-icon { font-size:1.45rem; }
+  .nav-logo .logo-words { font-size:1.05rem; }
+}
+/* smaller laptops (1201-1400px): a touch tighter so nothing is cut off */
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .nav-inner { padding:0 24px; gap:12px; }
+  .nav-socials { margin-right:-4px; }
+  .nav-socials a { width:26px; height:26px; }
+  .nav-links a { padding:8px 9px; font-size:.83rem; }
+  .nav-links a.back { padding:8px 13px; font-size:.87rem; }
+  .nav-logo .logo-box { padding:6px 10px 6px 8px; gap:7px; }
+  .nav-logo .logo-words { font-size:1rem; }
+}
