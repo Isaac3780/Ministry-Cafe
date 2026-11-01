@@ -131,7 +131,7 @@ const CHAT_QA = [
   { keys:["english","livelihood"], reply:"📖 CJS LINES Livelihood English: 7-week online course (1.5 hrs/week) for conversation, listening, reading + vocational English. SGD $150, certificate included. Basic English is enough — details on the <a href=\"english.html\">English page</a>!" },
   // PAGE NAVIGATION — ask about a page → short description + link to go there
   { keys:["menu page","menu.html","see menu","view menu","show menu","what's on the menu","what is on the menu","what do you sell","bowl builder","build your own bowl","what pages","what page"], reply:'🍜 <b>Menu page</b> — browse every set, the Build-a-Bowl builder, sides & prices. Tap a set to add it, or build your own. → <a href="menu.html">Open Menu</a>' },
-  { keys:["traineeship page","internship page","apply page","interns.html","trainee page"], reply:'🎓 <b>Traineeship page</b> — the 2-Year GROW traineeship explained: what you study, allowance, meals, and the big enquiry form. → <a href="interns.html">Open Traineeship</a>' },
+  { keys:["traineeship page","internship page","apply page","interns.html","trainee page"], reply:'🎓 <b>Traineeship page</b> — the 18-Month GROW traineeship explained: what you study, allowance, meals, and the big enquiry form. → <a href="interns.html">Open Traineeship</a>' },
   { keys:["about page","about.html","about us","who are you","who we are","our story","our mission"], reply:'💛 <b>About page</b> — who Kingdom Livelihood Academy is, our mission, and the Singapore + Siem Reap story behind the café. → <a href="about.html">Open About</a>' },
   { keys:["contact page","reach us page","message page"], reply:'📞 <b>Contact page</b> — contact form, prayer form, WhatsApp, catering & how to find us. → <a href="contact.html">Open Contact</a>' },
   { keys:["home page","go home","index.html","back to home","main page","landing page"], reply:'🏠 <b>Home</b> — the café intro, our story, and quick links to Menu, Traineeship, About & Contact. → <a href="index.html">Back to Home</a>' },
@@ -139,7 +139,7 @@ const CHAT_QA = [
   { keys:["vision","mission","transform lives","purpose","why do you exist","why this cafe","mission statement"], reply:"🌟 Vision — to transform lives through vocational training, entrepreneurship, discipleship + sustainable livelihoods. We exist to raise people, not just run cafés!" },
   { keys:["phase","phases","timeline","roadmap","months","budget","launch","plan to start"], reply:"🗓️ Phase 1 (Months 1–3): Singapore HQ, curriculum, handbook, SOPs, registration, admin, partnerships. Phase 2 (M4–6): Siem Reap café secured, renovated, equipped, staff trained, trial ops. Phase 3 (M7–12): recruit via local churches, first intake, programme launched!" },
   { keys:["business","business model","revenue","income","money","profit","franchise","affordable meals","community partnerships","funding","funded"], reply:"💼 Business model — affordable meals + training income + community partnerships, with future franchise / partner cafés as graduates mature." },
-  { keys:["2-year","trainee","intern","hire","job","salary","pay","earn","study","curriculum","subject"], reply:"🎓 2-Year Traineeship! Study English, Math, Customer Service, Café Operations, Inventory, Administration, Entrepreneurship, Leadership + Biblical Discipleship. Weekly fellowship is compulsory. Allowance + meals + certificate → chef / leader / village café partner. Enquire on the <a href=\"interns.html\">Traineeship page</a>!" },
+  { keys:["18-month","18 month","18 months","trainee","intern","hire","job","salary","pay","earn","study","curriculum","subject"], reply:"🎓 18-Month Traineeship! Six stages over 18 months across five learning areas — Language, Culinary, Hospitality, Business + Personal Development. Weekly fellowship is compulsory. Allowance + meals + certificate → chef / leader / village café partner. Enquire on the <a href=\"interns.html\">Traineeship page</a>!" },
   { keys:["grow","guide","raise","operate","walk","stages"], reply:"🌱 G.R.O.W. — Guide (faith, mentoring & discipleship), Raise (life skills, entrepreneurship, leadership), Operate (hands-on real café shifts), Walk (mature into leaders, disciple-makers, future café owners). All 4 stages for every trainee!" },
   { keys:["singapore hq","headquarters","hq","administration","admin","certificates","student records","quality assurance","handbook","sop"], reply:'<img class="flagic" src="https://flagcdn.com/w40/sg.png" alt="Singapore flag" /> Singapore HQ = the sending & equipping centre. Runs administration, curriculum & handbook, student records, certificates, finance & partnerships, and quality assurance.' },
   { keys:["siem reap cafe","siem reap café","training cafe","training café","first operational","chef","floor staff","community outreach","mini hotpot","bento"], reply:'<img class="flagic" src="https://flagcdn.com/w40/kh.png" alt="Cambodia flag" /> Siem Reap Training Café = our first operational café: DIY mini hotpot sets + bento value meals, practical chef & floor-staff training, community outreach, and a local church partner.' },
@@ -156,7 +156,7 @@ const CHAT_QA = [
   { keys:["veg","vegetarian","halal","bento"], reply:"🥬 Mushroom + vermicelli + veg! First 3 veg FREE in builder. Bento value meals from US$5.90. Halal-friendly options — ask staff." },
   { keys:["price","cost","cheap","budget"], reply:"💰 Base US$6.90 (broth+noodles+3 free veg). Most US$9–12. Feast for Two US$19.90. Community bowl US$4.90 ❤️" },
   { keys:["noodle","ramen","udon","mee","topping"], reply:"🍜 5 noodles: ramen, mee kia, vermicelli, udon, knife-cut. 20+ toppings US$0.80–US$2.50. Mix two noodles if torn!" },
-  { keys:["hi","hello","hey"], reply:"Hi! I'm Slurpy 🍲 DIY bowl help or 2-Year Traineeship info?" },
+  { keys:["hi","hello","hey"], reply:"Hi! I'm Slurpy 🍲 DIY bowl help or 18-Month Traineeship info?" },
   { keys:["thank"], reply:"Slurp you later! 🍜❤️" },
 ];
 const CHAT_FALLBACK = "🤔 Hmm, that's beyond my bowl-brain for now — still learning! You can still send a message at <a href=\"https://wa.me/6582683372\" target=\"_blank\" rel=\"noopener\">WhatsApp +65 82683372</a> and we'll reply to you as soon as possible 💬";
@@ -178,7 +178,7 @@ const QUICK = [
     { label:"Spice levels", ask:"How spicy is Mala?" },
     { label:"↩ Main menu" },
   ]},
-  { label:"🎓 Traineeship", ask:"Tell me about the 2-Year Traineeship", options:[
+  { label:"🎓 Traineeship", ask:"Tell me about the 18-Month Traineeship", options:[
     { label:"What is GROW?", ask:"What is GROW?" },
     { label:"Salary & allowance", ask:"How much salary and allowance?" },
     { label:"Enquire now", ask:"How do I apply for the traineeship?" },

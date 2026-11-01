@@ -1,9 +1,9 @@
 # 🍲 Kingdom Academy — DIY Hotpot Cafe
 
-AI-assisted DIY hotpot cafe + 2-Year Traineeship (earn while you learn).
+AI-assisted DIY hotpot cafe + 18-Month Traineeship (earn while you learn).
 Inspired by the **Kingdom Livelihood Academy** deck (G.R.O.W. model, Singapore HQ + Siem Reap training cafe).
 
-Live pages: `index.html` • `menu.html` (Build-A-Bowl + broth finder + tray) • `interns.html` (2-Year Traineeship + application) • `about.html` (story + G.R.O.W.)
+Live pages: `index.html` • `menu.html` (Build-A-Bowl + broth finder + tray) • `interns.html` (18-Month Traineeship + application) • `about.html` (story + G.R.O.W.)
 
 ## Push to GitHub (3 steps)
 
