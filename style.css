@@ -547,3 +547,83 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
   .nav-logo .logo-box { padding:6px 10px 6px 8px; gap:7px; }
   .nav-logo .logo-words { font-size:1rem; }
 }
+
+/* ===== traineeship: 18-month journey timeline (interns page) ===== */
+.journey{ position:relative; max-width:1000px; margin:46px auto 0; }
+.journey::before{
+  content:""; position:absolute; left:50%; top:6px; bottom:6px; width:4px; margin-left:-2px; border-radius:99px;
+  background:linear-gradient(180deg,var(--chili),var(--broth) 45%,var(--sage));
+  opacity:.30;
+}
+.journey-item{ position:relative; display:grid; grid-template-columns:1fr 1fr; column-gap:96px; padding-bottom:28px; }
+.journey-item:last-child{ padding-bottom:0; }
+.journey-item:nth-child(1){ --j:#d94a5d; --j2:#b32e44; --js:#fde3e6; }
+.journey-item:nth-child(2){ --j:#d99a10; --j2:#b57c05; --js:#fff2cf; }
+.journey-item:nth-child(3){ --j:#e07a3f; --j2:#c6511f; --js:#fbe6d9; }
+.journey-item:nth-child(4){ --j:#7c906c; --j2:#5f7350; --js:#e9efe4; }
+.journey-item:nth-child(5){ --j:#4fa8d8; --j2:#2f7fae; --js:#e3f1f8; }
+.journey-item:nth-child(6){ --j:#4caf7c; --j2:#2f8a5c; --js:#e2f4ea; }
+
+.journey-card{
+  grid-column:1; position:relative; background:#fff; border-radius:var(--radius);
+  padding:20px 24px 22px; box-shadow:var(--shadow); border:1px solid rgba(92,58,51,.07);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.journey-item:nth-child(even) .journey-card{ grid-column:2; }
+.journey-card:hover{ transform:translateY(-4px); box-shadow:0 18px 38px rgba(92,58,51,.16); }
+.journey-card::after{
+  content:""; position:absolute; left:0; right:0; top:0; height:5px;
+  border-radius:var(--radius) var(--radius) 0 0;
+  background:linear-gradient(90deg,var(--j),var(--j2));
+}
+.journey-head{ display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.journey-icon{
+  width:42px; height:42px; flex:0 0 auto; border-radius:13px; display:grid; place-items:center;
+  font-size:1.25rem; background:linear-gradient(135deg,var(--js),#fff);
+  box-shadow:inset 0 0 0 1px rgba(92,58,51,.07);
+}
+.journey-months{
+  font-size:.67rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--char); background:var(--cream-2); padding:6px 12px; border-radius:99px; white-space:nowrap;
+}
+.journey-card h3{ font-family:var(--font-head); font-size:1.12rem; line-height:1.25; margin:0 0 8px; color:var(--char); }
+.journey-card p{ margin:0; font-size:.92rem; line-height:1.62; color:var(--muted); }
+
+.journey-dot{
+  position:absolute; left:50%; top:22px; transform:translateX(-50%); z-index:2;
+  width:46px; height:46px; border-radius:50%; display:grid; place-items:center;
+  font-family:var(--font-head); font-weight:800; font-size:1.15rem; color:#fff;
+  background:linear-gradient(135deg,var(--j),var(--j2));
+  box-shadow:0 0 0 6px var(--cream), 0 6px 16px rgba(92,58,51,.22);
+}
+.journey-item::after{
+  content:""; position:absolute; top:44px; width:24px; height:2px; background:rgba(92,58,51,.18);
+}
+.journey-item:nth-child(odd)::after{ right:50%; margin-right:23px; }
+.journey-item:nth-child(even)::after{ left:50%; margin-left:23px; }
+
+html.journey-anim .journey-item{
+  opacity:0; transform:translateY(18px);
+  transition:opacity .55s ease, transform .55s cubic-bezier(.22,1,.36,1);
+}
+html.journey-anim .journey-item.is-in{ opacity:1; transform:none; }
+
+@media (max-width:820px){
+  .journey{ margin-top:34px; }
+  .journey::before{ left:21px; margin-left:0; top:4px; bottom:4px; }
+  .journey-item{ grid-template-columns:1fr; column-gap:0; padding-left:62px; padding-bottom:22px; }
+  .journey-item:nth-child(even) .journey-card{ grid-column:1; }
+  .journey-item::after{ display:none; }
+  .journey-dot{
+    left:23px; top:18px; width:40px; height:40px; font-size:1rem;
+    box-shadow:0 0 0 5px var(--cream), 0 4px 12px rgba(92,58,51,.2);
+  }
+  .journey-card{ padding:18px 20px 20px; }
+  .journey-card h3{ font-size:1.05rem; }
+  .journey-card p{ font-size:.9rem; }
+}
+@media (max-width:420px){
+  .journey-item{ padding-left:52px; }
+  .journey::before{ left:17px; }
+  .journey-dot{ left:19px; width:36px; height:36px; }
+}

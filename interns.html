@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>18-Month Traineeship — Earn While You Learn | Kingdom Academy</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=49" />
+  <link rel="stylesheet" href="style.css?v=50" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
 </head>
 <body>
@@ -57,13 +57,73 @@
   <section class="section" id="curriculum">
     <div class="wrap">
       <div class="section-title"><div class="kicker">What You Learn</div><h2>The 18-Month Learning Journey</h2><p>Six stages, built on five key learning areas — Language, Culinary, Hospitality, Business and Personal Development.</p></div>
-      <div class="perks">
-        <div class="perk"><div class="e">🔤</div><h3>Stage 1 · Basic Learning</h3><p><strong>Months 1–3.</strong> Build a strong foundation: language and communication, basic English for daily use, introduction to hospitality, personal discipline and teamwork, basic workplace safety and hygiene.</p></div>
-        <div class="perk"><div class="e">🍲</div><h3>Stage 2 · Fundamental Skill Training</h3><p><strong>Months 4–6.</strong> Learn the essential skills, hands-on and theory: culinary and food preparation, food handling and hygiene, customer service, basic computer and cashier skills, communication with customers.</p></div>
-        <div class="perk"><div class="e">📈</div><h3>Stage 3 · Practical Skill Development</h3><p><strong>Months 7–9.</strong> Strengthen skills through practice: cooking methods and food presentation, menu preparation and portion control, hospitality and serving, stock and ingredient management, basic purchasing and costing.</p></div>
-        <div class="perk"><div class="e">💼</div><h3>Stage 4 · Business & Operations</h3><p><strong>Months 10–12.</strong> Understand how a business operates: café daily operations, cashiering and sales recording, customer relations, inventory and stock control, basic business administration.</p></div>
-        <div class="perk"><div class="e">🌱</div><h3>Stage 5 · Integrated Application</h3><p><strong>Months 13–15.</strong> Bring all the skills together: practical culinary training, hospitality and customer service practice, teamwork and operational responsibility, problem-solving, basic entrepreneurship and business planning.</p></div>
-        <div class="perk"><div class="e">🎓</div><h3>Stage 6 · Assessment & Development</h3><p><strong>Months 16–18.</strong> Prepare for the next step: final practical skill assessments, language and communication assessment, workplace readiness, business knowledge review, individual development and career planning.</p></div>
+      <div class="journey">
+        <div class="journey-item">
+          <span class="journey-dot" aria-hidden="true">1</span>
+          <article class="journey-card">
+            <div class="journey-head">
+              <span class="journey-icon" aria-hidden="true">🔤</span>
+              <span class="journey-months">Months 1–3</span>
+            </div>
+            <h3>Stage 1 · Basic Learning</h3>
+            <p>Build a strong foundation: language and communication, basic English for daily use, introduction to hospitality, personal discipline and teamwork, basic workplace safety and hygiene.</p>
+          </article>
+        </div>
+        <div class="journey-item">
+          <span class="journey-dot" aria-hidden="true">2</span>
+          <article class="journey-card">
+            <div class="journey-head">
+              <span class="journey-icon" aria-hidden="true">🍲</span>
+              <span class="journey-months">Months 4–6</span>
+            </div>
+            <h3>Stage 2 · Fundamental Skill Training</h3>
+            <p>Learn the essential skills, hands-on and theory: culinary and food preparation, food handling and hygiene, customer service, basic computer and cashier skills, communication with customers.</p>
+          </article>
+        </div>
+        <div class="journey-item">
+          <span class="journey-dot" aria-hidden="true">3</span>
+          <article class="journey-card">
+            <div class="journey-head">
+              <span class="journey-icon" aria-hidden="true">📈</span>
+              <span class="journey-months">Months 7–9</span>
+            </div>
+            <h3>Stage 3 · Practical Skill Development</h3>
+            <p>Strengthen skills through practice: cooking methods and food presentation, menu preparation and portion control, hospitality and serving, stock and ingredient management, basic purchasing and costing.</p>
+          </article>
+        </div>
+        <div class="journey-item">
+          <span class="journey-dot" aria-hidden="true">4</span>
+          <article class="journey-card">
+            <div class="journey-head">
+              <span class="journey-icon" aria-hidden="true">💼</span>
+              <span class="journey-months">Months 10–12</span>
+            </div>
+            <h3>Stage 4 · Business &amp; Operations</h3>
+            <p>Understand how a business operates: café daily operations, cashiering and sales recording, customer relations, inventory and stock control, basic business administration.</p>
+          </article>
+        </div>
+        <div class="journey-item">
+          <span class="journey-dot" aria-hidden="true">5</span>
+          <article class="journey-card">
+            <div class="journey-head">
+              <span class="journey-icon" aria-hidden="true">🌱</span>
+              <span class="journey-months">Months 13–15</span>
+            </div>
+            <h3>Stage 5 · Integrated Application</h3>
+            <p>Bring all the skills together: practical culinary training, hospitality and customer service practice, teamwork and operational responsibility, problem-solving, basic entrepreneurship and business planning.</p>
+          </article>
+        </div>
+        <div class="journey-item">
+          <span class="journey-dot" aria-hidden="true">6</span>
+          <article class="journey-card">
+            <div class="journey-head">
+              <span class="journey-icon" aria-hidden="true">🎓</span>
+              <span class="journey-months">Months 16–18</span>
+            </div>
+            <h3>Stage 6 · Assessment &amp; Development</h3>
+            <p>Prepare for the next step: final practical skill assessments, language and communication assessment, workplace readiness, business knowledge review, individual development and career planning.</p>
+          </article>
+        </div>
       </div>
 
       <h3 style="margin-top:40px;text-align:center;">Five Key Learning Areas</h3>
@@ -149,5 +209,23 @@
   </div>
   <div class="toast" id="toast"></div>
   <script src="script.js"></script>
+  <script>
+  (function(){
+    var items = document.querySelectorAll('.journey-item');
+    if(!items.length) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!('IntersectionObserver' in window) || reduce){
+      for(var i=0;i<items.length;i++) items[i].classList.add('is-in');
+      return;
+    }
+    document.documentElement.className += ' journey-anim';
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+    for(var j=0;j<items.length;j++) io.observe(items[j]);
+  })();
+  </script>
 </body>
 </html>
