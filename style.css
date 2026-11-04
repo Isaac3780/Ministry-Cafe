@@ -583,6 +583,7 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
   transition:opacity .3s ease, transform .3s ease;
 }
 .stage-hint-icon{ display:inline-block; font-size:1rem; line-height:1; animation:hintNudge 2.6s ease-in-out infinite; }
+.stage-hint-icon .hint-ico-down{ display:none; }
 @keyframes hintNudge{
   0%,68%,100%{ transform:translateY(0); }
   78%{ transform:translateY(-4px); }
@@ -668,7 +669,14 @@ html.stages-anim .stage-showcase.is-in{ opacity:1; transform:none; }
     grid-column:1/-1; grid-row:1; justify-content:center; text-align:center;
     margin:0 0 8px; font-size:.76rem; line-height:1.5;
   }
-  .stage-hint-icon{ font-size:1.05rem; }
+  .stage-hint-icon{ font-size:1.05rem; animation-name:hintNudgeDown; }
+  .stage-hint-icon .hint-ico-up{ display:none; }
+  .stage-hint-icon .hint-ico-down{ display:inline; }
+  @keyframes hintNudgeDown{
+    0%,68%,100%{ transform:translateY(0); }
+    78%{ transform:translateY(4px); }
+    88%{ transform:translateY(1px); }
+  }
   .stage-tabs{
     grid-row:2;
     display:flex; flex-direction:column; justify-content:space-between; gap:6px;
