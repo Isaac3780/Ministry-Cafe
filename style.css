@@ -624,8 +624,8 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 
 .stage-panel.is-active{ animation:stagePanelIn .45s cubic-bezier(.22,1,.36,1); }
 @keyframes stagePanelIn{
-  from{ opacity:0; transform:translateY(10px); }
-  to{ opacity:1; transform:none; }
+  from{ transform:translateY(10px); }
+  to{ transform:none; }
 }
 
 html.stages-anim .stage-showcase{
