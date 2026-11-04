@@ -665,9 +665,10 @@ html.stages-anim .stage-showcase.is-in{ opacity:1; transform:none; }
     gap:10px; align-items:stretch; margin-top:32px;
   }
   .stage-hint{
-    grid-column:1/-1; grid-row:1; justify-content:flex-start;
-    margin:0 0 2px; font-size:.78rem;
+    grid-column:1/-1; grid-row:1; justify-content:center; text-align:center;
+    margin:0 0 8px; font-size:.76rem; line-height:1.5;
   }
+  .stage-hint-icon{ font-size:1.05rem; }
   .stage-tabs{
     grid-row:2;
     display:flex; flex-direction:column; justify-content:space-between; gap:6px;
