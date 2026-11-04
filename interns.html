@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>18-Month Traineeship — Earn While You Learn | Kingdom Academy</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=56" />
+  <link rel="stylesheet" href="style.css?v=57" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
 </head>
 <body>
@@ -90,6 +90,7 @@
             <span class="stage-tab-months">Months 16–18</span>
           </button>
         </div>
+        <p class="stage-hint"><span class="stage-hint-icon" aria-hidden="true">👆</span> Tap a stage to see what you'll learn</p>
 
         <div class="stage-panels">
           <article class="stage-panel is-active" id="stage-panel-1" role="tabpanel" aria-labelledby="stage-tab-1">
@@ -278,16 +279,23 @@
     }
 
     tabs.forEach(function(tab, i){
-      tab.addEventListener('click', function(){ select(i, false); });
+      tab.addEventListener('click', function(){ select(i, false); dismissHint(); });
       tab.addEventListener('keydown', function(e){
         var last = tabs.length - 1, next = null;
         if(e.key === 'ArrowRight' || e.key === 'ArrowDown') next = i === last ? 0 : i + 1;
         else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = i === 0 ? last : i - 1;
         else if(e.key === 'Home') next = 0;
         else if(e.key === 'End') next = last;
-        if(next !== null){ e.preventDefault(); select(next, true); }
+        if(next !== null){ e.preventDefault(); select(next, true); dismissHint(); }
       });
     });
+
+    var hint = document.querySelector('.stage-hint');
+    function dismissHint(){
+      if(!hint || hint.classList.contains('is-dismissed')) return;
+      hint.classList.add('is-dismissed');
+      setTimeout(function(){ hint.style.display = 'none'; }, 320);
+    }
 
     if(tabs.length && panels.length) select(0, false);
 

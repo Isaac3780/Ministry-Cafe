@@ -577,6 +577,19 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .stage-tab.is-active .stage-tab-label{ color:#fff; }
 .stage-tab.is-active .stage-tab-months{ color:rgba(255,255,255,.85); }
 
+.stage-hint{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  margin:12px 0 0; font-size:.82rem; font-weight:600; color:var(--muted);
+  transition:opacity .3s ease, transform .3s ease;
+}
+.stage-hint-icon{ display:inline-block; font-size:1rem; line-height:1; animation:hintNudge 2.6s ease-in-out infinite; }
+@keyframes hintNudge{
+  0%,68%,100%{ transform:translateY(0); }
+  78%{ transform:translateY(-4px); }
+  88%{ transform:translateY(-1px); }
+}
+.stage-hint.is-dismissed{ opacity:0; transform:translateY(-4px); pointer-events:none; }
+
 .stage-panels{ margin-top:16px; }
 .stage-panel{
   position:relative; isolation:isolate; overflow:hidden;
@@ -648,10 +661,15 @@ html.stages-anim .stage-showcase.is-in{ opacity:1; transform:none; }
 }
 @media (max-width:640px){
   .stage-showcase{
-    display:grid; grid-template-columns:76px 1fr; gap:10px; align-items:stretch;
-    margin-top:32px;
+    display:grid; grid-template-columns:76px 1fr; grid-template-rows:auto 1fr;
+    gap:10px; align-items:stretch; margin-top:32px;
+  }
+  .stage-hint{
+    grid-column:1/-1; grid-row:1; justify-content:flex-start;
+    margin:0 0 2px; font-size:.78rem;
   }
   .stage-tabs{
+    grid-row:2;
     display:flex; flex-direction:column; justify-content:space-between; gap:6px;
     padding:0; overflow:visible;
   }
@@ -662,7 +680,7 @@ html.stages-anim .stage-showcase.is-in{ opacity:1; transform:none; }
   .stage-tab-num{ font-size:1rem; }
   .stage-tab-label,
   .stage-tab-months{ display:none; }
-  .stage-panels{ margin-top:0; }
+  .stage-panels{ margin-top:0; grid-row:2; }
   .stage-panel{ padding:18px 16px 20px; height:100%; }
   .stage-panel-inner{ grid-template-columns:1fr; gap:10px; }
   .stage-panel-id{ display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
@@ -679,5 +697,6 @@ html.stages-anim .stage-showcase.is-in{ opacity:1; transform:none; }
 }
 @media (prefers-reduced-motion: reduce){
   .stage-panel.is-active{ animation:none; }
+  .stage-hint-icon{ animation:none; }
   html.stages-anim .stage-showcase{ transition:none; }
 }
