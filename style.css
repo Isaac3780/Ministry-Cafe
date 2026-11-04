@@ -548,34 +548,62 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
   .nav-logo .logo-words { font-size:1rem; }
 }
 
-/* ===== traineeship: 18-month stage cards (interns page) ===== */
-.stages{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:1140px; margin:46px auto 0; }
-.stage-card{
-  position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column;
-  background:#fff; border:1px solid rgba(92,58,51,.07); border-radius:var(--radius);
-  padding:26px 26px 24px; box-shadow:var(--shadow);
-  transition:transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s ease, border-color .28s ease;
-}
-.stage-card:nth-child(1){ --s:#d94a5d; --s2:#b32e44; --ss:#fde3e6; }
-.stage-card:nth-child(2){ --s:#d99a10; --s2:#b57c05; --ss:#fff2cf; }
-.stage-card:nth-child(3){ --s:#e07a3f; --s2:#c6511f; --ss:#fbe6d9; }
-.stage-card:nth-child(4){ --s:#7c906c; --s2:#5f7350; --ss:#e9efe4; }
-.stage-card:nth-child(5){ --s:#4fa8d8; --s2:#2f7fae; --ss:#e3f1f8; }
-.stage-card:nth-child(6){ --s:#4caf7c; --s2:#2f8a5c; --ss:#e2f4ea; }
+/* ===== traineeship: interactive stage tabs (interns page) ===== */
+.stage-showcase{ max-width:1140px; margin:46px auto 0; }
 
-.stage-card::after{
+.stage-tabs{ display:grid; grid-template-columns:repeat(6,1fr); gap:10px; }
+.stage-tab{
+  position:relative; display:flex; flex-direction:column; gap:5px; text-align:left; cursor:pointer;
+  font-family:inherit; background:#fff; border:1px solid rgba(92,58,51,.09); border-radius:14px;
+  padding:13px 14px 14px; box-shadow:0 4px 14px rgba(207,63,84,.06);
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+}
+.stage-tab:nth-child(1){ --s:#d94a5d; --s2:#b32e44; --ss:#fde3e6; }
+.stage-tab:nth-child(2){ --s:#d99a10; --s2:#b57c05; --ss:#fff2cf; }
+.stage-tab:nth-child(3){ --s:#e07a3f; --s2:#c6511f; --ss:#fbe6d9; }
+.stage-tab:nth-child(4){ --s:#7c906c; --s2:#5f7350; --ss:#e9efe4; }
+.stage-tab:nth-child(5){ --s:#4fa8d8; --s2:#2f7fae; --ss:#e3f1f8; }
+.stage-tab:nth-child(6){ --s:#4caf7c; --s2:#2f8a5c; --ss:#e2f4ea; }
+.stage-tab:hover{ transform:translateY(-3px); border-color:rgba(92,58,51,.16); box-shadow:0 12px 26px rgba(92,58,51,.14); }
+.stage-tab:focus-visible{ outline:2px solid var(--char); outline-offset:3px; }
+.stage-tab-num{ font-family:var(--font-head); font-weight:800; font-size:1.05rem; line-height:1; color:var(--s); }
+.stage-tab-label{ font-size:.82rem; font-weight:700; line-height:1.25; color:var(--char); }
+.stage-tab-months{ font-size:.6rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+.stage-tab.is-active{
+  background:linear-gradient(135deg,var(--s),var(--s2)); border-color:transparent;
+  box-shadow:0 16px 30px -10px var(--s), inset 0 1px 0 rgba(255,255,255,.28);
+}
+.stage-tab.is-active .stage-tab-num{ color:#fff; opacity:.8; }
+.stage-tab.is-active .stage-tab-label{ color:#fff; }
+.stage-tab.is-active .stage-tab-months{ color:rgba(255,255,255,.85); }
+
+.stage-panels{ margin-top:16px; }
+.stage-panel{
+  position:relative; isolation:isolate; overflow:hidden;
+  background:#fff; border:1px solid rgba(92,58,51,.07); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:34px 38px 36px;
+}
+.stage-panel[hidden]{ display:none; }
+.stage-panel:nth-child(1){ --s:#d94a5d; --s2:#b32e44; --ss:#fde3e6; }
+.stage-panel:nth-child(2){ --s:#d99a10; --s2:#b57c05; --ss:#fff2cf; }
+.stage-panel:nth-child(3){ --s:#e07a3f; --s2:#c6511f; --ss:#fbe6d9; }
+.stage-panel:nth-child(4){ --s:#7c906c; --s2:#5f7350; --ss:#e9efe4; }
+.stage-panel:nth-child(5){ --s:#4fa8d8; --s2:#2f7fae; --ss:#e3f1f8; }
+.stage-panel:nth-child(6){ --s:#4caf7c; --s2:#2f8a5c; --ss:#e2f4ea; }
+.stage-panel::after{
   content:""; position:absolute; left:0; right:0; top:0; height:5px;
   background:linear-gradient(90deg,var(--s),var(--s2));
 }
 .stage-num{
-  position:absolute; top:8px; right:16px; z-index:-1; pointer-events:none; user-select:none;
-  font-family:var(--font-head); font-weight:800; font-size:3.4rem; line-height:1;
-  letter-spacing:-.04em; color:var(--s); opacity:.13;
+  position:absolute; top:14px; right:20px; z-index:-1; pointer-events:none; user-select:none;
+  font-family:var(--font-head); font-weight:800; font-size:4.6rem; line-height:1;
+  letter-spacing:-.04em; color:var(--s); opacity:.09;
 }
-.stage-head{ display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+.stage-panel-inner{ display:grid; grid-template-columns:290px 1fr; gap:38px; align-items:start; }
+.stage-panel-id{ display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
 .stage-icon{
-  width:50px; height:50px; flex:0 0 auto; border-radius:14px; display:grid; place-items:center;
-  font-size:1.4rem; background:linear-gradient(135deg,var(--ss),#fff);
+  width:60px; height:60px; flex:0 0 auto; border-radius:16px; display:grid; place-items:center;
+  font-size:1.7rem; background:linear-gradient(135deg,var(--ss),#fff);
   box-shadow:inset 0 0 0 1px rgba(92,58,51,.07), 0 4px 10px rgba(92,58,51,.06);
 }
 .stage-months{
@@ -587,26 +615,52 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
   content:""; width:6px; height:6px; border-radius:50%;
   background:var(--s); box-shadow:0 0 8px var(--s);
 }
-.stage-card h3{ font-family:var(--font-head); font-size:1.16rem; line-height:1.25; margin:0 0 9px; color:var(--char); }
-.stage-card p{ margin:0; font-size:.92rem; line-height:1.65; color:var(--muted); }
+.stage-panel h3{ font-family:var(--font-head); font-size:1.5rem; line-height:1.22; margin:0; color:var(--char); }
+.stage-panel-body p{ margin:0; font-size:1rem; line-height:1.8; color:var(--muted); }
 
-.stage-card:hover{ transform:translateY(-6px); border-color:rgba(92,58,51,.14); box-shadow:0 20px 42px rgba(92,58,51,.18), 0 0 34px -14px var(--s); }
-
-html.stages-anim .stage-card{
-  opacity:0; transform:translateY(20px);
-  transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1), box-shadow .28s ease, border-color .28s ease;
+@media (min-width:1001px){
+  .stage-panel{ min-height:244px; }
 }
-html.stages-anim .stage-card.is-in{ opacity:1; transform:none; }
-html.stages-anim .stage-card.is-in:hover{ transform:translateY(-6px); }
+
+.stage-panel.is-active{ animation:stagePanelIn .45s cubic-bezier(.22,1,.36,1); }
+@keyframes stagePanelIn{
+  from{ opacity:0; transform:translateY(10px); }
+  to{ opacity:1; transform:none; }
+}
+
+html.stages-anim .stage-showcase{
+  opacity:0; transform:translateY(20px);
+  transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1);
+}
+html.stages-anim .stage-showcase.is-in{ opacity:1; transform:none; }
 
 @media (max-width:1000px){
-  .stages{ grid-template-columns:repeat(2,1fr); gap:18px; }
+  .stage-tabs{ grid-template-columns:repeat(3,1fr); }
+  .stage-panel{ padding:30px 30px 32px; }
+  .stage-panel-inner{ grid-template-columns:1fr; gap:18px; }
+  .stage-panel-id{
+    display:grid; grid-template-columns:auto 1fr; grid-template-areas:"icon months" "icon title";
+    column-gap:14px; row-gap:6px; align-items:center;
+  }
+  .stage-panel-id .stage-icon{ grid-area:icon; }
+  .stage-panel-id .stage-months{ grid-area:months; justify-self:start; }
+  .stage-panel-id h3{ grid-area:title; }
 }
 @media (max-width:640px){
-  .stages{ grid-template-columns:1fr; margin-top:32px; }
-  .stage-card{ padding:22px 22px 20px; }
-  .stage-icon{ width:46px; height:46px; font-size:1.3rem; }
-  .stage-num{ font-size:3rem; top:6px; right:14px; }
-  .stage-card h3{ font-size:1.08rem; }
-  .stage-card p{ font-size:.9rem; }
+  .stage-showcase{ margin-top:32px; }
+  .stage-tabs{
+    display:flex; gap:8px; overflow-x:auto; padding:2px 2px 8px;
+    scroll-snap-type:x mandatory; scrollbar-width:none;
+  }
+  .stage-tabs::-webkit-scrollbar{ display:none; }
+  .stage-tab{ flex:0 0 152px; scroll-snap-align:start; }
+  .stage-panel{ padding:26px 22px 26px; }
+  .stage-icon{ width:52px; height:52px; font-size:1.45rem; }
+  .stage-panel h3{ font-size:1.22rem; }
+  .stage-panel-body p{ font-size:.94rem; }
+  .stage-num{ font-size:3.4rem; top:10px; right:14px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .stage-panel.is-active{ animation:none; }
+  html.stages-anim .stage-showcase{ transition:none; }
 }

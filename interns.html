@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>18-Month Traineeship — Earn While You Learn | Kingdom Academy</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=53" />
+  <link rel="stylesheet" href="style.css?v=54" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
 </head>
 <body>
@@ -57,61 +57,120 @@
   <section class="section" id="curriculum">
     <div class="wrap">
       <div class="section-title"><div class="kicker">What You Learn</div><h2>The 18-Month Learning Journey</h2><p>Six stages, built on five key learning areas — Language, Culinary, Hospitality, Business and Personal Development.</p></div>
-      <div class="stages">
-        <article class="stage-card">
-          <span class="stage-num" aria-hidden="true">01</span>
-          <div class="stage-head">
-            <span class="stage-icon" aria-hidden="true">🔤</span>
-            <span class="stage-months">Months 1–3</span>
-          </div>
-          <h3>Stage 1 · Basic Learning</h3>
-          <p>Build a strong foundation: language and communication, basic English for daily use, introduction to hospitality, personal discipline and teamwork, basic workplace safety and hygiene.</p>
-        </article>
-        <article class="stage-card">
-          <span class="stage-num" aria-hidden="true">02</span>
-          <div class="stage-head">
-            <span class="stage-icon" aria-hidden="true">🍲</span>
-            <span class="stage-months">Months 4–6</span>
-          </div>
-          <h3>Stage 2 · Fundamental Skill Training</h3>
-          <p>Learn the essential skills, hands-on and theory: culinary and food preparation, food handling and hygiene, customer service, basic computer and cashier skills, communication with customers.</p>
-        </article>
-        <article class="stage-card">
-          <span class="stage-num" aria-hidden="true">03</span>
-          <div class="stage-head">
-            <span class="stage-icon" aria-hidden="true">📈</span>
-            <span class="stage-months">Months 7–9</span>
-          </div>
-          <h3>Stage 3 · Practical Skill Development</h3>
-          <p>Strengthen skills through practice: cooking methods and food presentation, menu preparation and portion control, hospitality and serving, stock and ingredient management, basic purchasing and costing.</p>
-        </article>
-        <article class="stage-card">
-          <span class="stage-num" aria-hidden="true">04</span>
-          <div class="stage-head">
-            <span class="stage-icon" aria-hidden="true">💼</span>
-            <span class="stage-months">Months 10–12</span>
-          </div>
-          <h3>Stage 4 · Business &amp; Operations</h3>
-          <p>Understand how a business operates: café daily operations, cashiering and sales recording, customer relations, inventory and stock control, basic business administration.</p>
-        </article>
-        <article class="stage-card">
-          <span class="stage-num" aria-hidden="true">05</span>
-          <div class="stage-head">
-            <span class="stage-icon" aria-hidden="true">🌱</span>
-            <span class="stage-months">Months 13–15</span>
-          </div>
-          <h3>Stage 5 · Integrated Application</h3>
-          <p>Bring all the skills together: practical culinary training, hospitality and customer service practice, teamwork and operational responsibility, problem-solving, basic entrepreneurship and business planning.</p>
-        </article>
-        <article class="stage-card">
-          <span class="stage-num" aria-hidden="true">06</span>
-          <div class="stage-head">
-            <span class="stage-icon" aria-hidden="true">🎓</span>
-            <span class="stage-months">Months 16–18</span>
-          </div>
-          <h3>Stage 6 · Assessment &amp; Development</h3>
-          <p>Prepare for the next step: final practical skill assessments, language and communication assessment, workplace readiness, business knowledge review, individual development and career planning.</p>
-        </article>
+      <div class="stage-showcase">
+        <div class="stage-tabs" role="tablist" aria-label="18-month programme stages">
+          <button type="button" class="stage-tab is-active" id="stage-tab-1" role="tab" aria-selected="true" aria-controls="stage-panel-1" tabindex="0">
+            <span class="stage-tab-num">01</span>
+            <span class="stage-tab-label">Basic Learning</span>
+            <span class="stage-tab-months">Months 1–3</span>
+          </button>
+          <button type="button" class="stage-tab" id="stage-tab-2" role="tab" aria-selected="false" aria-controls="stage-panel-2" tabindex="-1">
+            <span class="stage-tab-num">02</span>
+            <span class="stage-tab-label">Fundamental Skills</span>
+            <span class="stage-tab-months">Months 4–6</span>
+          </button>
+          <button type="button" class="stage-tab" id="stage-tab-3" role="tab" aria-selected="false" aria-controls="stage-panel-3" tabindex="-1">
+            <span class="stage-tab-num">03</span>
+            <span class="stage-tab-label">Practical Skills</span>
+            <span class="stage-tab-months">Months 7–9</span>
+          </button>
+          <button type="button" class="stage-tab" id="stage-tab-4" role="tab" aria-selected="false" aria-controls="stage-panel-4" tabindex="-1">
+            <span class="stage-tab-num">04</span>
+            <span class="stage-tab-label">Business &amp; Ops</span>
+            <span class="stage-tab-months">Months 10–12</span>
+          </button>
+          <button type="button" class="stage-tab" id="stage-tab-5" role="tab" aria-selected="false" aria-controls="stage-panel-5" tabindex="-1">
+            <span class="stage-tab-num">05</span>
+            <span class="stage-tab-label">Integrated Application</span>
+            <span class="stage-tab-months">Months 13–15</span>
+          </button>
+          <button type="button" class="stage-tab" id="stage-tab-6" role="tab" aria-selected="false" aria-controls="stage-panel-6" tabindex="-1">
+            <span class="stage-tab-num">06</span>
+            <span class="stage-tab-label">Assessment</span>
+            <span class="stage-tab-months">Months 16–18</span>
+          </button>
+        </div>
+
+        <div class="stage-panels">
+          <article class="stage-panel is-active" id="stage-panel-1" role="tabpanel" aria-labelledby="stage-tab-1">
+            <span class="stage-num" aria-hidden="true">01</span>
+            <div class="stage-panel-inner">
+              <div class="stage-panel-id">
+                <span class="stage-icon" aria-hidden="true">🔤</span>
+                <span class="stage-months">Months 1–3</span>
+                <h3>Stage 1 · Basic Learning</h3>
+              </div>
+              <div class="stage-panel-body">
+                <p>Build a strong foundation: language and communication, basic English for daily use, introduction to hospitality, personal discipline and teamwork, basic workplace safety and hygiene.</p>
+              </div>
+            </div>
+          </article>
+          <article class="stage-panel" id="stage-panel-2" role="tabpanel" aria-labelledby="stage-tab-2" hidden>
+            <span class="stage-num" aria-hidden="true">02</span>
+            <div class="stage-panel-inner">
+              <div class="stage-panel-id">
+                <span class="stage-icon" aria-hidden="true">🍲</span>
+                <span class="stage-months">Months 4–6</span>
+                <h3>Stage 2 · Fundamental Skill Training</h3>
+              </div>
+              <div class="stage-panel-body">
+                <p>Learn the essential skills, hands-on and theory: culinary and food preparation, food handling and hygiene, customer service, basic computer and cashier skills, communication with customers.</p>
+              </div>
+            </div>
+          </article>
+          <article class="stage-panel" id="stage-panel-3" role="tabpanel" aria-labelledby="stage-tab-3" hidden>
+            <span class="stage-num" aria-hidden="true">03</span>
+            <div class="stage-panel-inner">
+              <div class="stage-panel-id">
+                <span class="stage-icon" aria-hidden="true">📈</span>
+                <span class="stage-months">Months 7–9</span>
+                <h3>Stage 3 · Practical Skill Development</h3>
+              </div>
+              <div class="stage-panel-body">
+                <p>Strengthen skills through practice: cooking methods and food presentation, menu preparation and portion control, hospitality and serving, stock and ingredient management, basic purchasing and costing.</p>
+              </div>
+            </div>
+          </article>
+          <article class="stage-panel" id="stage-panel-4" role="tabpanel" aria-labelledby="stage-tab-4" hidden>
+            <span class="stage-num" aria-hidden="true">04</span>
+            <div class="stage-panel-inner">
+              <div class="stage-panel-id">
+                <span class="stage-icon" aria-hidden="true">💼</span>
+                <span class="stage-months">Months 10–12</span>
+                <h3>Stage 4 · Business &amp; Operations</h3>
+              </div>
+              <div class="stage-panel-body">
+                <p>Understand how a business operates: café daily operations, cashiering and sales recording, customer relations, inventory and stock control, basic business administration.</p>
+              </div>
+            </div>
+          </article>
+          <article class="stage-panel" id="stage-panel-5" role="tabpanel" aria-labelledby="stage-tab-5" hidden>
+            <span class="stage-num" aria-hidden="true">05</span>
+            <div class="stage-panel-inner">
+              <div class="stage-panel-id">
+                <span class="stage-icon" aria-hidden="true">🌱</span>
+                <span class="stage-months">Months 13–15</span>
+                <h3>Stage 5 · Integrated Application</h3>
+              </div>
+              <div class="stage-panel-body">
+                <p>Bring all the skills together: practical culinary training, hospitality and customer service practice, teamwork and operational responsibility, problem-solving, basic entrepreneurship and business planning.</p>
+              </div>
+            </div>
+          </article>
+          <article class="stage-panel" id="stage-panel-6" role="tabpanel" aria-labelledby="stage-tab-6" hidden>
+            <span class="stage-num" aria-hidden="true">06</span>
+            <div class="stage-panel-inner">
+              <div class="stage-panel-id">
+                <span class="stage-icon" aria-hidden="true">🎓</span>
+                <span class="stage-months">Months 16–18</span>
+                <h3>Stage 6 · Assessment &amp; Development</h3>
+              </div>
+              <div class="stage-panel-body">
+                <p>Prepare for the next step: final practical skill assessments, language and communication assessment, workplace readiness, business knowledge review, individual development and career planning.</p>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
 
       <h3 style="margin-top:40px;text-align:center;">Five Key Learning Areas</h3>
@@ -199,11 +258,44 @@
   <script src="script.js"></script>
   <script>
   (function(){
-    var cards = document.querySelectorAll('.stage-card');
-    if(!cards.length) return;
+    var tabs = [].slice.call(document.querySelectorAll('.stage-tab'));
+    var panels = [].slice.call(document.querySelectorAll('.stage-panel'));
+
+    function select(index, focusTab){
+      tabs.forEach(function(tab, i){
+        var on = i === index;
+        tab.classList.toggle('is-active', on);
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.setAttribute('tabindex', on ? '0' : '-1');
+        if(on && focusTab) tab.focus();
+      });
+      panels.forEach(function(panel, i){
+        var on = i === index;
+        panel.classList.toggle('is-active', on);
+        if(on){ panel.removeAttribute('hidden'); }
+        else { panel.setAttribute('hidden', ''); }
+      });
+    }
+
+    tabs.forEach(function(tab, i){
+      tab.addEventListener('click', function(){ select(i, false); });
+      tab.addEventListener('keydown', function(e){
+        var last = tabs.length - 1, next = null;
+        if(e.key === 'ArrowRight' || e.key === 'ArrowDown') next = i === last ? 0 : i + 1;
+        else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = i === 0 ? last : i - 1;
+        else if(e.key === 'Home') next = 0;
+        else if(e.key === 'End') next = last;
+        if(next !== null){ e.preventDefault(); select(next, true); }
+      });
+    });
+
+    if(tabs.length && panels.length) select(0, false);
+
+    var showcase = document.querySelector('.stage-showcase');
+    if(!showcase) return;
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(!('IntersectionObserver' in window) || reduce){
-      for(var i=0;i<cards.length;i++) cards[i].classList.add('is-in');
+      showcase.classList.add('is-in');
       return;
     }
     document.documentElement.className += ' stages-anim';
@@ -211,8 +303,8 @@
       entries.forEach(function(e){
         if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
       });
-    }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
-    for(var j=0;j<cards.length;j++) io.observe(cards[j]);
+    }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    io.observe(showcase);
   })();
   </script>
 </body>
