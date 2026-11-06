@@ -67,7 +67,7 @@ h1,h2,h3,h4 { font-family:var(--font-head); color:var(--char); line-height:1.25;
 .hero {
   position:relative; min-height:68vh; display:flex; align-items:center; justify-content:center;
   text-align:center; color:#2A1A10; padding:90px 20px 70px;
-  background-image: linear-gradient(180deg,rgba(255,246,233,.93),rgba(255,246,233,.82)), url('photos/hero-cafe-interior.jpg');
+  background-image: linear-gradient(180deg,rgba(255,246,233,.93),rgba(255,246,233,.82)), var(--hero-photo, url('photos/hero-cafe-interior.jpg'));
   background-size:cover; background-position:center 45%; overflow:hidden;
 }
 .hero::after { content:"🍲"; position:absolute; font-size:22rem; opacity:.08; right:-30px; bottom:-70px; animation:steam 5s ease-in-out infinite; }
@@ -490,7 +490,7 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 }
 
 /* home split hero: words left, circular dish right, interior backdrop */
-.hero-home{background-image:linear-gradient(180deg,rgba(255,246,233,.93),rgba(255,246,233,.82)),url('photos/hero-cafe-interior.jpg');display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;text-align:left;}
+.hero-home{background-image:linear-gradient(180deg,rgba(255,246,233,.93),rgba(255,246,233,.82)),var(--hero-photo, url('photos/hero-cafe-interior.jpg'));display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;text-align:left;}
 .hero-home .hero-content{margin:0;max-width:600px;}
 .hero-home .hero-kicker{color:var(--chili);}
 .hero-home .hero-content h1{color:#2A1A10;text-shadow:none;}
