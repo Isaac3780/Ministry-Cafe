@@ -293,3 +293,46 @@ document.addEventListener("DOMContentLoaded",()=>{
 })();
 
 // GROW cards are now static (no accordion toggle)
+
+// english.html — programme content stays covered until "Enquire Now"
+(function(){
+  var curtain=document.getElementById("curtain");
+  if(!curtain) return;
+  var inner=curtain.querySelector(".curtain-inner");
+  try{ if(inner) inner.setAttribute("inert",""); }catch(err){}
+  var opened=false;
+  function scrollTo(sel){
+    var el=(sel&&document.querySelector(sel))||curtain;
+    if(!el) return;
+    var top=el.getBoundingClientRect().top+window.pageYOffset-96;
+    window.scrollTo({top:top,behavior:"smooth"});
+  }
+  function reveal(sel,trigger){
+    if(opened){ scrollTo(sel); return; }
+    opened=true;
+    var teaser=document.getElementById("programmeTeaser");
+    // glide to the covered area first so the opening is visible
+    var anchor=teaser||curtain;
+    var top=anchor.getBoundingClientRect().top+window.pageYOffset-96;
+    window.scrollTo({top:top,behavior:"smooth"});
+    var b=trigger;
+    var label=b&&b.getAttribute?b.textContent:"";
+    if(b&&b.classList&&b.classList.contains("btn")){ b.setAttribute("aria-busy","true"); b.textContent="Opening\u2026"; }
+    window.setTimeout(function(){
+      document.body.classList.add("reveal-open");
+      try{ if(inner) inner.removeAttribute("inert"); }catch(err){}
+    },650);
+    window.setTimeout(function(){
+      if(b&&b.classList&&b.classList.contains("btn")){ b.removeAttribute("aria-busy"); b.textContent=label; }
+      if(sel&&sel!=="#curtain") scrollTo(sel);
+    },2650);
+  }
+  var triggers=document.querySelectorAll("[data-reveal]");
+  for(var i=0;i<triggers.length;i++){
+    triggers[i].addEventListener("click",function(e){
+      e.preventDefault();
+      reveal(this.getAttribute("data-reveal-target"),this);
+    });
+  }
+  if(location.hash==="#details"||location.hash==="#curtain") reveal(location.hash);
+})();
