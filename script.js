@@ -294,7 +294,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 // GROW cards are now static (no accordion toggle)
 
-// english.html — enquiry gate: submit, then unlock the programme
+// english.html — enquiry gate: submit or look up, then unlock the programme
 (function(){
   var curtain=document.getElementById("curtain");
   if(!curtain) return;
@@ -304,22 +304,47 @@ document.addEventListener("DOMContentLoaded",()=>{
   var fallback=document.getElementById("gateFallback");
   var status=document.getElementById("ef-status");
   var submitBtn=document.getElementById("ef-submit");
+  var gateAlt=document.getElementById("gateAlt");
+  var showLookup=document.getElementById("showLookup");
+  var showEnquiry=document.getElementById("showEnquiry");
+  var lookupForm=document.getElementById("lookupFormEl");
+  var lookupInput=document.getElementById("lf-query");
+  var lookupBtn=document.getElementById("lf-submit");
+  var lookupStatus=document.getElementById("lf-status");
   var KEY="englishProgrammeUnlocked";
+  var TTL=30*24*60*60*1000;
   var endpoint=form?(form.getAttribute("data-endpoint")||""):"";
+  var lookupReady=false;
 
-  var unlocked=false;
-  try{ unlocked=sessionStorage.getItem(KEY)==="1"; }catch(err){}
+  function writeUnlock(){
+    try{ localStorage.setItem(KEY,JSON.stringify({t:Date.now()})); }catch(err){}
+  }
+  function readUnlock(){
+    try{
+      var raw=localStorage.getItem(KEY);
+      if(!raw) return false;
+      var obj=null;
+      try{ obj=JSON.parse(raw); }catch(err){ obj={t:Number(raw)}; }
+      if(obj&&obj.t&&Date.now()-obj.t<TTL) return true;
+      localStorage.removeItem(KEY);
+    }catch(err){}
+    return false;
+  }
+
+  var unlocked=readUnlock();
+  var fromLink=false;
   if(/[?&]unlocked=1(&|$)/.test(location.search)){
-    unlocked=true;
-    try{ sessionStorage.setItem(KEY,"1"); }catch(err){}
+    unlocked=true; fromLink=true; writeUnlock();
     try{ history.replaceState(null,"",location.pathname+location.hash); }catch(err){}
   }
 
-  // no endpoint configured yet → keep the Google Form button in view
+  // the card only appears once an endpoint is configured
   if(form&&formCard&&endpoint){
     formCard.hidden=false;
     form.setAttribute("action",endpoint);
     if(fallback) fallback.hidden=true;
+    lookupReady=form.getAttribute("data-lookup")==="1";
+    if(lookupReady&&gateAlt) gateAlt.hidden=false;
   }
 
   function topOf(el){ return el.getBoundingClientRect().top+window.pageYOffset-96; }
@@ -327,13 +352,25 @@ document.addEventListener("DOMContentLoaded",()=>{
   function openProgramme(scroll){
     document.body.classList.add("reveal-open");
     try{ if(inner) inner.removeAttribute("inert"); }catch(err){}
-    if(scroll){
-      window.setTimeout(function(){
-        window.scrollTo({top:topOf(curtain),behavior:"smooth"});
-      },1000);
+    if(!scroll) return;
+    var moved=false;
+    function go(){
+      if(moved) return;
+      moved=true;
+      window.scrollTo({top:topOf(curtain),behavior:"smooth"});
     }
+    // wait for the unroll to finish, otherwise the page cannot scroll far enough yet
+    curtain.addEventListener("transitionend",function onEnd(e){
+      if(e.target!==curtain) return;
+      if(e.propertyName&&e.propertyName!=="grid-template-rows") return;
+      curtain.removeEventListener("transitionend",onEnd);
+      window.setTimeout(go,80);
+    });
+    window.setTimeout(go,2400);
   }
-  if(unlocked) window.setTimeout(function(){ openProgramme(true); },300);
+
+  // remembered visitors get the programme straight away, without being moved
+  if(unlocked) window.setTimeout(function(){ openProgramme(fromLink); },300);
 
   // in-page jumps (hero buttons)
   var jumps=document.querySelectorAll("[data-scroll]");
@@ -350,10 +387,10 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   if(!form) return;
 
-  function say(msg,state){
-    if(!status) return;
-    status.textContent=msg||"";
-    status.className="form-status"+(state==="ok"?" is-ok":state==="error"?" is-error":"");
+  function setStatus(el,msg,state){
+    if(!el) return;
+    el.textContent=msg||"";
+    el.className="form-status"+(state==="ok"?" is-ok":state==="error"?" is-error":"");
   }
 
   function collect(){
@@ -370,9 +407,9 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
 
   function finish(){
-    try{ sessionStorage.setItem(KEY,"1"); }catch(err){}
+    writeUnlock();
     if(submitBtn){ submitBtn.disabled=true; submitBtn.removeAttribute("aria-busy"); submitBtn.textContent="Sent \u2713"; }
-    say("Thank you — your enquiry is in. Opening the programme\u2026","ok");
+    setStatus(status,"Thank you \u2014 your enquiry is in. Opening the programme\u2026","ok");
     window.setTimeout(function(){ openProgramme(true); },900);
   }
 
@@ -399,10 +436,16 @@ document.addEventListener("DOMContentLoaded",()=>{
     });
   }
 
-  // fallback for networks/browsers that block the fetch reply (CORS): a script tag
-  function sendJsonp(data){
+  // script-tag request: works even when fetch replies are blocked (CORS)
+  function scriptGet(params){
     return new Promise(function(resolve,reject){
       var name="efCb"+Date.now().toString(36)+Math.floor(Math.random()*1e6);
+      var qs="callback="+name;
+      for(var k in params){
+        if(Object.prototype.hasOwnProperty.call(params,k)){
+          qs+="&"+k+"="+encodeURIComponent(params[k]);
+        }
+      }
       var s=document.createElement("script");
       var timer=window.setTimeout(function(){ cleanup(); reject(new Error("timed out")); },20000);
       function cleanup(){
@@ -410,13 +453,9 @@ document.addEventListener("DOMContentLoaded",()=>{
         try{ delete window[name]; }catch(err){ window[name]=undefined; }
         if(s.parentNode) s.parentNode.removeChild(s);
       }
-      window[name]=function(res){
-        cleanup();
-        if(res&&res.ok) resolve(res);
-        else reject(new Error((res&&res.error)||"not saved"));
-      };
+      window[name]=function(res){ cleanup(); resolve(res); };
       s.onerror=function(){ cleanup(); reject(new Error("network error")); };
-      s.src=endpoint+(endpoint.indexOf("?")>-1?"&":"?")+"callback="+name+"&data="+encodeURIComponent(JSON.stringify(data));
+      s.src=endpoint+(endpoint.indexOf("?")>-1?"&":"?")+qs;
       document.body.appendChild(s);
     });
   }
@@ -427,12 +466,50 @@ document.addEventListener("DOMContentLoaded",()=>{
     var data=collect();
     if(data._gotcha){ finish(); return; } // bots get a happy response, no email
     if(submitBtn){ submitBtn.disabled=true; submitBtn.setAttribute("aria-busy","true"); submitBtn.textContent="Sending\u2026"; }
-    say("Sending your enquiry\u2026","");
+    setStatus(status,"Sending your enquiry\u2026","");
     sendJson(data).then(finish).catch(function(){
-      sendJsonp(data).then(finish).catch(function(err){
+      scriptGet({data:JSON.stringify(data)}).then(finish).catch(function(err){
         resetBtn();
-        say("Sorry \u2014 that didn't send ("+((err&&err.message)||"network")+"). Please try again, or write to broadvision378@gmail.com.","error");
+        setStatus(status,"Sorry \u2014 that didn't send ("+((err&&err.message)||"network")+"). Please try again, or write to broadvision378@gmail.com.","error");
       });
     });
   });
+
+  // returning enquirer: unlock with the email or number they used
+  if(lookupReady&&lookupForm){
+    if(showLookup) showLookup.addEventListener("click",function(){
+      form.hidden=true;
+      if(gateAlt) gateAlt.hidden=true;
+      lookupForm.hidden=false;
+      if(lookupInput) lookupInput.focus();
+    });
+    if(showEnquiry) showEnquiry.addEventListener("click",function(){
+      lookupForm.hidden=true;
+      form.hidden=false;
+      if(gateAlt) gateAlt.hidden=false;
+    });
+    lookupForm.addEventListener("submit",function(e){
+      e.preventDefault();
+      var q=(lookupInput&&lookupInput.value||"").replace(/^\s+|\s+$/g,"");
+      if(q.length<5){
+        setStatus(lookupStatus,"Please enter the email or contact number from your enquiry.","error");
+        return;
+      }
+      if(lookupBtn){ lookupBtn.disabled=true; lookupBtn.textContent="Checking\u2026"; }
+      setStatus(lookupStatus,"Checking our list\u2026","");
+      scriptGet({lookup:q}).then(function(res){
+        if(res&&res.ok){
+          writeUnlock();
+          setStatus(lookupStatus,"Found you \u2014 opening the programme\u2026","ok");
+          window.setTimeout(function(){ openProgramme(true); },700);
+          return;
+        }
+        if(lookupBtn){ lookupBtn.disabled=false; lookupBtn.textContent="Unlock the Programme \u2192"; }
+        setStatus(lookupStatus,(res&&res.error)||"We couldn't find an enquiry with those details.","error");
+      }).catch(function(err){
+        if(lookupBtn){ lookupBtn.disabled=false; lookupBtn.textContent="Unlock the Programme \u2192"; }
+        setStatus(lookupStatus,"Sorry \u2014 that didn't work ("+((err&&err.message)||"network")+"). Please try again.","error");
+      });
+    });
+  }
 })();

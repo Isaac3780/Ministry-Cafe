@@ -758,3 +758,13 @@ body.reveal-open .gate { grid-template-rows:0fr; opacity:0; padding-top:0; paddi
 #ef-submit[disabled] { opacity:.65; cursor:progress; }
 @media (max-width:900px){ .gate-grid { grid-template-columns:1fr; gap:26px; } .gate-card { padding:24px; } }
 @media (prefers-reduced-motion: reduce){ .gate { transition-duration:.01s !important; } }
+
+/* English programme: "already enquired" unlock */
+.gate-alt { margin:16px 0 0; font-size:.9rem; color:var(--muted); }
+.gate-alt span { margin-right:6px; }
+.linkbtn { background:none; border:0; padding:0; font:inherit; font-weight:700; color:var(--chili-dark); cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
+.linkbtn:hover { color:var(--chili); }
+.lookup-form { margin-top:22px; padding-top:22px; border-top:1px solid rgba(74,26,10,.12); }
+.lookup-form h4 { font-size:1.25rem; margin-bottom:6px; }
+.lookup-lead { color:var(--muted); font-size:.92rem; margin-bottom:16px; }
+.lookup-form[hidden], .gate-alt[hidden] { display:none; }

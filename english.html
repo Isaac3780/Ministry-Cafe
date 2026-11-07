@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=65" />
+  <link rel="stylesheet" href="style.css?v=66" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
 </head>
 <body>
@@ -99,7 +99,7 @@
         </div>
 
         <div class="gate-card" id="gateFormCard" hidden>
-          <form id="enquiryFormEl" class="enquiry-form" method="post" action="" data-endpoint="https://script.google.com/macros/s/AKfycbybLzkvKqYbT7wgBBuqaAvhuZ0B3FqaYLjkxTKiCFxghtp02q3cAuobqbiCC9meRMNhBQ/exec">
+          <form id="enquiryFormEl" class="enquiry-form" method="post" action="" data-endpoint="https://script.google.com/macros/s/AKfycbybLzkvKqYbT7wgBBuqaAvhuZ0B3FqaYLjkxTKiCFxghtp02q3cAuobqbiCC9meRMNhBQ/exec" data-lookup="0">
             <input type="hidden" name="page" value="english" />
             <div class="field"><label for="ef-name">Name *</label><input id="ef-name" name="name" required autocomplete="name" /></div>
             <div class="field"><label for="ef-email">Email *</label><input id="ef-email" name="email" type="email" required autocomplete="email" /></div>
@@ -127,6 +127,23 @@
             <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <button type="submit" class="btn btn-broth" id="ef-submit" style="width:100%;">Send Enquiry &amp; Unlock →</button>
             <p class="form-status" id="ef-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="gate-alt" id="gateAlt" hidden>
+            <span>Already enquired?</span>
+            <button type="button" class="linkbtn" id="showLookup">Unlock with your email or number</button>
+          </div>
+
+          <form id="lookupFormEl" class="lookup-form" hidden>
+            <h4>Welcome back</h4>
+            <p class="lookup-lead">Enter the email address or contact number you used in your enquiry and we'll open the programme.</p>
+            <div class="field">
+              <label for="lf-query">Email or contact number</label>
+              <input id="lf-query" name="query" type="text" autocomplete="email" required />
+            </div>
+            <button type="submit" class="btn btn-broth" id="lf-submit" style="width:100%;">Unlock the Programme →</button>
+            <p class="form-status" id="lf-status" role="status" aria-live="polite"></p>
+            <p class="gate-alt"><button type="button" class="linkbtn" id="showEnquiry">← Send a new enquiry instead</button></p>
           </form>
         </div>
 
