@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=64" />
+  <link rel="stylesheet" href="style.css?v=65" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
 </head>
 <body>
@@ -59,7 +59,7 @@
         <span>💻 Online • 1.5 hrs/session</span>
         <span>🎓 Certificate Issued in Singapore</span>
       </div>
-      <div class="cta-pair"><a href="https://forms.gle/TSKdKLLRFJAC5b4L7" target="_blank" rel="noopener" class="btn btn-broth" style="margin-right:10px;" data-enquire>Enquire Now ↗</a><a href="#programmeTeaser" class="btn btn-outline" data-scroll>What's Inside ↓</a></div>
+      <div class="cta-pair"><a href="#enquireForm" class="btn btn-broth" style="margin-right:10px;" data-scroll>Enquire Now ↓</a><a href="#enquireForm" class="btn btn-outline" data-scroll>What's Inside ↓</a></div>
     </div>
   </header>
 
@@ -82,18 +82,64 @@
     </div>
   </section>
 
-  <!-- REVEAL TEASER -->
-  <div class="curtain-teaser">
+  <!-- ENQUIRY GATE -->
+  <section class="section gate" id="enquireForm">
     <div class="wrap">
-      <div class="teaser-card" id="programmeTeaser">
-        <div class="teaser-lock" aria-hidden="true">🔒</div>
-        <h2>What You Build Is Covered Up</h2>
-        <p>The skills, programme details and terms unlock after you enquire. Fill in the short form — once you submit, tap the link on the thank-you page and you'll come straight back to the open programme.</p>
-        <a href="https://forms.gle/TSKdKLLRFJAC5b4L7" target="_blank" rel="noopener" class="btn btn-broth" data-enquire>Enquire Now ↗</a>
-        <p class="teaser-note">Takes about a minute • we reply within 3 working days</p>
+      <div class="gate-grid">
+        <div class="gate-copy">
+          <div class="kicker">Enquire &amp; Unlock</div>
+          <h2>See the Full Programme</h2>
+          <p>Send us a short enquiry and the whole programme opens right here — the six practical skill areas, the programme details and the terms &amp; conditions.</p>
+          <ul class="checklist">
+            <li>Six practical areas — speaking to vocational English</li>
+            <li>7 weeks, one session a week, fully online</li>
+            <li>Certificate issued in Singapore</li>
+          </ul>
+          <p class="teaser-note">Takes about a minute • we reply within 3 working days.</p>
+        </div>
+
+        <div class="gate-card" id="gateFormCard" hidden>
+          <form id="enquiryFormEl" class="enquiry-form" method="post" action="" data-endpoint="">
+            <input type="hidden" name="page" value="english" />
+            <div class="field"><label for="ef-name">Name *</label><input id="ef-name" name="name" required autocomplete="name" /></div>
+            <div class="field"><label for="ef-email">Email *</label><input id="ef-email" name="email" type="email" required autocomplete="email" /></div>
+            <div class="field"><label for="ef-contact">Contact number *</label><input id="ef-contact" name="contact" type="tel" required autocomplete="tel" /></div>
+            <div class="field"><label for="ef-start">Preferred start</label>
+              <select id="ef-start" name="start">
+                <option value="">Choose one…</option>
+                <option>As soon as possible</option>
+                <option>Within 1–3 months</option>
+                <option>3–6 months</option>
+                <option>Just exploring</option>
+              </select>
+            </div>
+            <div class="field"><label for="ef-source">How did you hear about us?</label>
+              <select id="ef-source" name="source">
+                <option value="">Choose one…</option>
+                <option>Church</option>
+                <option>Friend or family</option>
+                <option>Facebook / Instagram</option>
+                <option>Walk-in at the café</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field"><label for="ef-message">Anything you want to add?</label><textarea id="ef-message" name="message" rows="3"></textarea></div>
+            <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <button type="submit" class="btn btn-broth" id="ef-submit" style="width:100%;">Send Enquiry &amp; Unlock →</button>
+            <p class="form-status" id="ef-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="gate-card" id="gateFallback">
+          <div class="teaser-lock" aria-hidden="true">🔒</div>
+          <h3>Enquire to Unlock</h3>
+          <p>Fill in our enquiry form and the programme opens straight away.</p>
+          <a class="btn btn-broth" href="https://forms.gle/TSKdKLLRFJAC5b4L7" target="_blank" rel="noopener">Open the Enquiry Form ↗</a>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+  <iframe name="enquirySink" id="enquirySink" title="Enquiry submission" hidden></iframe>
 
   <div class="curtain" id="curtain">
     <div class="curtain-inner">

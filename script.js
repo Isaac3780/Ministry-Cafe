@@ -294,12 +294,19 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 // GROW cards are now static (no accordion toggle)
 
-// english.html — programme content unlocks after the enquiry form
+// english.html — enquiry gate: submit, then unlock the programme
 (function(){
   var curtain=document.getElementById("curtain");
   if(!curtain) return;
   var inner=curtain.querySelector(".curtain-inner");
+  var form=document.getElementById("enquiryFormEl");
+  var formCard=document.getElementById("gateFormCard");
+  var fallback=document.getElementById("gateFallback");
+  var status=document.getElementById("ef-status");
+  var submitBtn=document.getElementById("ef-submit");
   var KEY="englishProgrammeUnlocked";
+  var endpoint=form?(form.getAttribute("data-endpoint")||""):"";
+
   var unlocked=false;
   try{ unlocked=sessionStorage.getItem(KEY)==="1"; }catch(err){}
   if(/[?&]unlocked=1(&|$)/.test(location.search)){
@@ -307,18 +314,28 @@ document.addEventListener("DOMContentLoaded",()=>{
     try{ sessionStorage.setItem(KEY,"1"); }catch(err){}
     try{ history.replaceState(null,"",location.pathname+location.hash); }catch(err){}
   }
-  function openCurtain(scroll){
-    window.setTimeout(function(){
-      document.body.classList.add("reveal-open");
-      try{ if(inner) inner.removeAttribute("inert"); }catch(err){}
-      if(scroll) window.setTimeout(function(){
-        var top=curtain.getBoundingClientRect().top+window.pageYOffset-96;
-        window.scrollTo({top:top,behavior:"smooth"});
-      },2100);
-    },unlocked?300:0);
+
+  // no endpoint configured yet → keep the Google Form button in view
+  if(form&&formCard&&endpoint){
+    formCard.hidden=false;
+    form.setAttribute("action",endpoint);
+    if(fallback) fallback.hidden=true;
   }
-  if(unlocked) openCurtain(true);
-  // in-page jumps (e.g. “What’s Inside”)
+
+  function topOf(el){ return el.getBoundingClientRect().top+window.pageYOffset-96; }
+
+  function openProgramme(scroll){
+    document.body.classList.add("reveal-open");
+    try{ if(inner) inner.removeAttribute("inert"); }catch(err){}
+    if(scroll){
+      window.setTimeout(function(){
+        window.scrollTo({top:topOf(curtain),behavior:"smooth"});
+      },1000);
+    }
+  }
+  if(unlocked) window.setTimeout(function(){ openProgramme(true); },300);
+
+  // in-page jumps (hero buttons)
   var jumps=document.querySelectorAll("[data-scroll]");
   for(var i=0;i<jumps.length;i++){
     jumps[i].addEventListener("click",function(e){
@@ -327,8 +344,95 @@ document.addEventListener("DOMContentLoaded",()=>{
       var el=document.querySelector(sel);
       if(!el) return;
       e.preventDefault();
-      var top=el.getBoundingClientRect().top+window.pageYOffset-96;
-      window.scrollTo({top:top,behavior:"smooth"});
+      window.scrollTo({top:topOf(el),behavior:"smooth"});
     });
   }
+
+  if(!form) return;
+
+  function say(msg,state){
+    if(!status) return;
+    status.textContent=msg||"";
+    status.className="form-status"+(state==="ok"?" is-ok":state==="error"?" is-error":"");
+  }
+
+  function collect(){
+    var data={};
+    var els=form.elements;
+    for(var i=0;i<els.length;i++){
+      var el=els[i];
+      if(el.name) data[el.name]=el.value;
+    }
+    data.ref=Date.now().toString(36)+"-"+Math.floor(Math.random()*1e6).toString(36);
+    data.page="english";
+    data.referrer=location.href;
+    return data;
+  }
+
+  function finish(){
+    try{ sessionStorage.setItem(KEY,"1"); }catch(err){}
+    if(submitBtn){ submitBtn.disabled=true; submitBtn.removeAttribute("aria-busy"); submitBtn.textContent="Sent \u2713"; }
+    say("Thank you — your enquiry is in. Opening the programme\u2026","ok");
+    window.setTimeout(function(){ openProgramme(true); },900);
+  }
+
+  function resetBtn(){
+    if(!submitBtn) return;
+    submitBtn.disabled=false;
+    submitBtn.removeAttribute("aria-busy");
+    submitBtn.textContent="Send Enquiry & Unlock \u2192";
+  }
+
+  function sendJson(data){
+    if(!window.fetch) return Promise.reject(new Error("no fetch"));
+    var ctrl=window.AbortController?new AbortController():null;
+    var timer=ctrl?window.setTimeout(function(){ ctrl.abort(); },20000):0;
+    return window.fetch(endpoint,{
+      method:"POST",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify(data),
+      signal:ctrl?ctrl.signal:undefined
+    }).then(function(r){ return r.json(); }).then(function(res){
+      if(timer) window.clearTimeout(timer);
+      if(res&&res.ok) return res;
+      throw new Error((res&&res.error)||"server error");
+    });
+  }
+
+  // fallback for networks/browsers that block the fetch reply (CORS): a script tag
+  function sendJsonp(data){
+    return new Promise(function(resolve,reject){
+      var name="efCb"+Date.now().toString(36)+Math.floor(Math.random()*1e6);
+      var s=document.createElement("script");
+      var timer=window.setTimeout(function(){ cleanup(); reject(new Error("timed out")); },20000);
+      function cleanup(){
+        window.clearTimeout(timer);
+        try{ delete window[name]; }catch(err){ window[name]=undefined; }
+        if(s.parentNode) s.parentNode.removeChild(s);
+      }
+      window[name]=function(res){
+        cleanup();
+        if(res&&res.ok) resolve(res);
+        else reject(new Error((res&&res.error)||"not saved"));
+      };
+      s.onerror=function(){ cleanup(); reject(new Error("network error")); };
+      s.src=endpoint+(endpoint.indexOf("?")>-1?"&":"?")+"callback="+name+"&data="+encodeURIComponent(JSON.stringify(data));
+      document.body.appendChild(s);
+    });
+  }
+
+  form.addEventListener("submit",function(e){
+    if(!endpoint) return; // Google Form fallback handles it
+    e.preventDefault();
+    var data=collect();
+    if(data._gotcha){ finish(); return; } // bots get a happy response, no email
+    if(submitBtn){ submitBtn.disabled=true; submitBtn.setAttribute("aria-busy","true"); submitBtn.textContent="Sending\u2026"; }
+    say("Sending your enquiry\u2026","");
+    sendJson(data).then(finish).catch(function(){
+      sendJsonp(data).then(finish).catch(function(err){
+        resetBtn();
+        say("Sorry \u2014 that didn't send ("+((err&&err.message)||"network")+"). Please try again, or write to broadvision378@gmail.com.","error");
+      });
+    });
+  });
 })();
