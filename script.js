@@ -294,45 +294,41 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 // GROW cards are now static (no accordion toggle)
 
-// english.html — programme content stays covered until "Enquire Now"
+// english.html — programme content unlocks after the enquiry form
 (function(){
   var curtain=document.getElementById("curtain");
   if(!curtain) return;
   var inner=curtain.querySelector(".curtain-inner");
-  try{ if(inner) inner.setAttribute("inert",""); }catch(err){}
-  var opened=false;
-  function scrollTo(sel){
-    var el=(sel&&document.querySelector(sel))||curtain;
-    if(!el) return;
-    var top=el.getBoundingClientRect().top+window.pageYOffset-96;
-    window.scrollTo({top:top,behavior:"smooth"});
+  var KEY="englishProgrammeUnlocked";
+  var unlocked=false;
+  try{ unlocked=sessionStorage.getItem(KEY)==="1"; }catch(err){}
+  if(/[?&]unlocked=1(&|$)/.test(location.search)){
+    unlocked=true;
+    try{ sessionStorage.setItem(KEY,"1"); }catch(err){}
+    try{ history.replaceState(null,"",location.pathname+location.hash); }catch(err){}
   }
-  function reveal(sel,trigger){
-    if(opened){ scrollTo(sel); return; }
-    opened=true;
-    var teaser=document.getElementById("programmeTeaser");
-    // glide to the covered area first so the opening is visible
-    var anchor=teaser||curtain;
-    var top=anchor.getBoundingClientRect().top+window.pageYOffset-96;
-    window.scrollTo({top:top,behavior:"smooth"});
-    var b=trigger;
-    var label=b&&b.getAttribute?b.textContent:"";
-    if(b&&b.classList&&b.classList.contains("btn")){ b.setAttribute("aria-busy","true"); b.textContent="Opening\u2026"; }
+  function openCurtain(scroll){
     window.setTimeout(function(){
       document.body.classList.add("reveal-open");
       try{ if(inner) inner.removeAttribute("inert"); }catch(err){}
-    },650);
-    window.setTimeout(function(){
-      if(b&&b.classList&&b.classList.contains("btn")){ b.removeAttribute("aria-busy"); b.textContent=label; }
-      if(sel&&sel!=="#curtain") scrollTo(sel);
-    },2650);
+      if(scroll) window.setTimeout(function(){
+        var top=curtain.getBoundingClientRect().top+window.pageYOffset-96;
+        window.scrollTo({top:top,behavior:"smooth"});
+      },2100);
+    },unlocked?300:0);
   }
-  var triggers=document.querySelectorAll("[data-reveal]");
-  for(var i=0;i<triggers.length;i++){
-    triggers[i].addEventListener("click",function(e){
+  if(unlocked) openCurtain(true);
+  // in-page jumps (e.g. “What’s Inside”)
+  var jumps=document.querySelectorAll("[data-scroll]");
+  for(var i=0;i<jumps.length;i++){
+    jumps[i].addEventListener("click",function(e){
+      var sel=this.getAttribute("href");
+      if(!sel||sel.charAt(0)!=="#") return;
+      var el=document.querySelector(sel);
+      if(!el) return;
       e.preventDefault();
-      reveal(this.getAttribute("data-reveal-target"),this);
+      var top=el.getBoundingClientRect().top+window.pageYOffset-96;
+      window.scrollTo({top:top,behavior:"smooth"});
     });
   }
-  if(location.hash==="#details"||location.hash==="#curtain") reveal(location.hash);
 })();

@@ -733,3 +733,5 @@ body.reveal-open .curtain-inner > .section { opacity:1; transform:none; }
 @media (prefers-reduced-motion: reduce){
   .curtain, .curtain-teaser, .curtain-inner > .section { transition-duration:.01s !important; }
 }
+
+.teaser-note { font-size:.82rem; color:var(--muted); margin:14px 0 0; }
