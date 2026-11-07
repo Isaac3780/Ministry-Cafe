@@ -709,3 +709,10 @@ html.stages-anim .stage-showcase.is-in{ opacity:1; transform:none; }
   .stage-hint-icon{ animation:none; }
   html.stages-anim .stage-showcase{ transition:none; }
 }
+
+/* Healthy drinks menu */
+.cards.drinks { grid-template-columns:repeat(4,1fr); gap:20px; }
+.cards.drinks .card img.food { height:210px; }
+@media (max-width:1024px){ .cards.drinks { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:760px){ .cards.drinks { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:480px){ .cards.drinks { grid-template-columns:1fr; } }

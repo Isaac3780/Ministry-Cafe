@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build-A-Bowl 🍜 | Kingdom Academy In-House Training Café School</title>
+  <title>Healthy Drinks Menu 🥤 | Kingdom Academy In-House Training Café School</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=60" />
+  <link rel="stylesheet" href="style.css?v=61" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍲</text></svg>" />
 </head>
 <body>
@@ -28,7 +28,7 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
 <li><a href="message.html">About Us</a></li>
-        <li><a href="menu.html" class="active">Build-A-Bowl</a></li>
+        <li><a href="menu.html" class="active">Healthy Drinks</a></li>
         <li><a href="about.html">G.R.O.W. + Vision</a></li>
         <li><a href="english.html">English Programme</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
@@ -48,72 +48,46 @@
 
   <header class="hero hero-small" style="--hero-photo:url('photos/hero-04.jpeg')">
     <div class="hero-content">
-      <div class="hero-kicker">DIY in 60 seconds</div>
-      <h1>Build-A-Bowl 🍜</h1>
-      <p>Base US$6.90 = broth + noodles + 3 free veg. Add toppings. AI totals it live — and every bowl is a training shift.</p>
-      <div><button class="btn btn-broth" id="openCartTop">🧺 View Tray (<span id="cartCountTop">0</span>)</button></div>
+      <div class="hero-kicker">Healthy Drinks Menu</div>
+      <h1>Sip Well. <em>Live Well.</em></h1>
+      <p>Fresh fruit shakes, coolers and warm comforts — blended and brewed in-house by our trainees.</p>
     </div>
   </header>
 
-  <!-- SIGNATURE BOWLS -->
+  <!-- COLD DRINKS -->
   <section class="section" style="padding-top:56px;">
     <div class="wrap">
-      <div class="section-title"><h2>Signature Bowls</h2><p>Three housemade signatures — every bowl trains a future chef.</p></div>
-      <div class="cards">
-        <div class="card"><img class="food" src="photos/menu-05.webp" alt="Mala Buddy Set" /><div class="card-body"><h3>Mala Buddy Set</h3><p>Mala + ramen + beef + enoki + egg.</p><span class="price">US$9.90</span></div></div>
-        <div class="card"><img class="food" src="photos/menu-03.webp" alt="Laksa First-Timer" /><div class="card-body"><h3>Laksa First-Timer</h3><p>Laksa + mee kia + prawn + tofu puff.</p><span class="price">US$10.90</span></div></div>
-        <div class="card"><img class="food" src="photos/menu-04.webp" alt="Veg Comfort Bowl" /><div class="card-body"><h3>Veg Comfort Bowl</h3><p>Mushroom + vermicelli + 4 veg.</p><span class="price">US$8.90</span></div></div>
+      <div class="section-title"><h2>Cold &amp; Fresh</h2><p>Blended to order — eight refreshing picks.</p></div>
+      <div class="cards drinks">
+        <div class="card"><img class="food" src="photos/drinks-01.webp" alt="Mango Shake" /><div class="card-body"><h3>Mango Shake</h3></div></div>
+        <div class="card"><img class="food" src="photos/drinks-02.webp" alt="Watermelon Cooler" /><div class="card-body"><h3>Watermelon Cooler</h3></div></div>
+        <div class="card"><img class="food" src="photos/drinks-03.webp" alt="Banana Milk Shake" /><div class="card-body"><h3>Banana Milk Shake</h3></div></div>
+        <div class="card"><img class="food" src="photos/drinks-04.webp" alt="Papaya Milk Shake" /><div class="card-body"><h3>Papaya Milk Shake</h3></div></div>
+        <div class="card"><img class="food" src="photos/drinks-05.webp" alt="Pineapple Lime" /><div class="card-body"><h3>Pineapple Lime</h3></div></div>
+        <div class="card"><img class="food" src="photos/drinks-06.webp" alt="Avocado Shake" /><div class="card-body"><h3>Avocado Shake</h3></div></div>
+        <div class="card"><img class="food" src="photos/drinks-07.webp" alt="Coconut Shake" /><div class="card-body"><h3>Coconut Shake</h3></div></div>
+        <div class="card"><img class="food" src="photos/drinks-08.webp" alt="Mango Banana Yoghurt" /><div class="card-body"><h3>Mango Banana Yoghurt</h3></div></div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- HOT DRINKS -->
+  <section class="section section-alt">
     <div class="wrap">
-      <div class="section-title"><div class="kicker">Step 1–4</div><h2>DIY Your Hotpot Bowl</h2><p>Tap to select. Watch the price. Add to tray.</p></div>
-
-      <div class="builder">
-        <h3>🍲 1. Pick Broth (base US$6.90)</h3>
-        <div class="opt-grid" id="brothGrid"></div>
-
-        <h3>🍜 2. Pick Noodles (included)</h3>
-        <div class="opt-grid" id="noodleGrid"></div>
-
-        <h3>🥬 3. Add Toppings (US$0.80 – US$2.50)</h3>
-        <p style="font-size:.85rem;color:var(--muted)">First 3 veg FREE — code: VEG. Tap to add/remove.</p>
-        <div class="topping-grid" id="toppingGrid" style="margin-top:10px;"></div>
-
-        <h3>🌶️ 4. Spice Level: <span id="spiceLabel">1 – Mild Kick</span></h3>
-        <div class="spice-row"><span>😌 0</span><input type="range" id="spice" min="0" max="5" value="1" /><span>🥵 5</span></div>
-
-        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-          <button class="btn btn-dark" id="aiSuggest" style="border:none;">✨ AI Surprise Me</button>
-          <button class="btn btn-chili" id="resetBowl" style="border:none;">Reset</button>
-        </div>
-
-        <div class="bill">
-          <div><div style="font-size:.8rem;opacity:.7;">YOUR BOWL</div><div id="bowlSummary" style="font-weight:700;">Mala + Ramen + 0 toppings</div></div>
-          <div class="total" id="bowlTotal">US$6.90</div>
-          <button class="btn btn-broth" id="addBowl" style="border:none;">Add Bowl to Tray +</button>
-        </div>
-      </div>
-
-      <div class="quiz" id="quiz" style="margin-top:36px;">
-        <h3>🤖 Not sure? 3-question Broth Finder</h3>
-        <div class="q" data-q="mood"><p>1. Mood?</p><div class="opts"><button data-v="spicy">🌶️ Need kick</button><button data-v="comfort">🥰 Comfort</button><button data-v="light">🥗 Light</button></div></div>
-        <div class="q" data-q="budget"><p>2. Budget?</p><div class="opts"><button data-v="low">💰 Under US$9</button><button data-v="mid">😋 US$9–12</button><button data-v="feast">🎉 Feast mode</button></div></div>
-        <div class="q" data-q="diet"><p>3. Diet?</p><div class="opts"><button data-v="halal">Halal-friendly</button><button data-v="veg">Veg</button><button data-v="all">All in!</button></div></div>
-        <button class="btn btn-dark" id="quizGo" style="border:none; margin-top:10px;">Get My Broth ✨</button>
-        <div class="quiz-result" id="quizResult"></div>
+      <div class="section-title"><div class="kicker">Hot &amp; Soothing</div><h2>Warm Comforts</h2><p>Brewed fresh — for slow mornings and late study nights.</p></div>
+      <div class="cards drinks">
+        <div class="card"><img class="food" src="photos/drinks-09.webp" alt="Hot Khmer Coffee" /><div class="card-body"><h3>Hot Khmer Coffee</h3></div></div>
+        <div class="card"><img class="food" src="photos/drinks-10.webp" alt="Ginger Honey Lemon" /><div class="card-body"><h3>Ginger Honey Lemon</h3></div></div>
+        <div class="card"><img class="food" src="photos/drinks-11.webp" alt="Hot Chocolate" /><div class="card-body"><h3>Hot Chocolate</h3></div></div>
+        <div class="card"><img class="food" src="photos/drinks-12.webp" alt="Hot Milk Tea" /><div class="card-body"><h3>Hot Milk Tea</h3></div></div>
       </div>
     </div>
   </section>
 
-  <section class="section section-alt" style="padding-top:40px;">
+  <section class="section" style="padding-top:0;text-align:center;">
     <div class="wrap">
-      <div class="section-title"><div class="kicker">Quick Add</div><h2>Signature Sets</h2></div>
-      <div class="filter-bar" id="filterBar"><button class="active" data-f="all">All</button><button data-f="set">Sets</button><button data-f="side">Sides & Drinks</button></div>
-      <div class="menu-grid" id="menuGrid"></div>
-      <p class="note">Edit broths / toppings / prices in <strong>script.js → BROTHS, NOODLES, TOPPINGS, MENU</strong>.</p>
+      <p class="note" style="font-size:.95rem;">All drinks are made in-house in our training café — every cup is a training shift.</p>
+      <a href="interns.html" class="btn btn-dark" style="margin-top:10px;">🎓 Train With Us →</a>
     </div>
   </section>
 
@@ -125,28 +99,18 @@
           <a href="https://open.spotify.com/show/0a6FLmbbuEbCT5A371Neod?si=fbc7a15857954547" target="_blank" rel="noopener" aria-label="Spotify"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
           <a href="https://www.youtube.com/@DailyDevotions-Chr1st" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M19.6,5.2c-0.2-0.9-0.8-1.6-1.7-1.8C16.3,3,10,3,10,3S3.7,3,2.1,3.4C1.2,3.6,0.6,4.3,0.4,5.2C0,6.8,0,10,0,10s0,3.2,0.4,4.8c0.2,0.9,0.8,1.6,1.7,1.8C3.7,17,10,17,10,17s6.3,0,7.9-0.4c0.9-0.2,1.5-0.9,1.7-1.8C20,13.2,20,10,20,10S20,6.8,19.6,5.2z M8,13.2V6.8l5.4,3.2L8,13.2z"/></svg></a>
         </div></div>
-      <div><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="message.html">About Us</a></li><li><a href="menu.html">Build-A-Bowl</a></li><li><a href="about.html">G.R.O.W. + Vision</a></li><li><a href="english.html">English Programme</a></li><li><a href="interns.html">🎓 18-Month Traineeship</a></li></ul></div>
+      <div><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="message.html">About Us</a></li><li><a href="menu.html">Healthy Drinks</a></li><li><a href="about.html">G.R.O.W. + Vision</a></li><li><a href="english.html">English Programme</a></li><li><a href="interns.html">🎓 18-Month Traineeship</a></li></ul></div>
       <div><h4>Parent Ministry</h4><ul><li><a target="_blank" rel="noopener" href="https://isaac3780.github.io/echofromabove/charity-site/index.html">↩ Broad Vision</a></li><li><a target="_blank" rel="noopener" href="https://isaac3780.github.io/echofromabove/charity-site/about.html">About</a></li><li><a target="_blank" rel="noopener" href="https://isaac3780.github.io/echofromabove/charity-site/mission.html">Missions</a></li></ul></div>
       <div><h4>Contact Us</h4><ul><li><a href="contact.html">Say Hello</a></li><li><a href="https://forms.gle/yKgfLnRqDMRPCcc16" target="_blank" rel="noopener">Contact Form</a></li><li><a href="https://forms.gle/M6q2qT2wRfyZ9fyo7" target="_blank" rel="noopener">Prayer Request</a></li></ul></div>
     </div>
     <div class="footer-bottom">© 2026 Kingdom Livelihood Academy • John 21:15-17 • By Jenny Kwek</div>
   </footer>
 
-  <div class="overlay" id="overlay"></div>
-  <aside class="cart-drawer" id="cartDrawer">
-    <header><b>🧺 Your Tray</b><button id="closeCart" style="background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer;">×</button></header>
-    <div class="cart-items" id="cartItems"><p>Empty. Build a bowl!</p></div>
-    <footer>
-      <div style="display:flex;justify-content:space-between;font-weight:800;margin-bottom:12px;"><span>Total</span><span id="cartTotal">US$0.00</span></div>
-      <button class="btn btn-chili" id="checkoutBtn" style="width:100%;border:none;">Checkout (Demo) →</button>
-    </footer>
-  </aside>
-
-  <button class="chat-fab" id="chatFab">🍲</button>
+  <button class="chat-fab" id="chatFab">🥤</button>
   <div class="chatbox" id="chatbox">
-    <header style="background:var(--chili);color:#fff;padding:14px 16px;"><b>Slurpy — AI Hotpot Buddy 🤖</b></header>
-    <div class="chatlog" id="chatlog"><div class="msg bot">Craving spicy, laksa, or light? Tell me + budget and I'll build it!</div></div>
-    <div class="chatinput"><input id="chatText" placeholder="e.g. mala medium spicy" /><button id="chatSend">➤</button></div>
+    <header style="background:var(--chili);color:#fff;padding:14px 16px;"><b>Slurpy — Café Buddy 🤖</b></header>
+    <div class="chatlog" id="chatlog"><div class="msg bot">Thirsty? Ask me about our shakes, coolers and hot drinks 🥤</div></div>
+    <div class="chatinput"><input id="chatText" placeholder="e.g. mango shake" /><button id="chatSend">➤</button></div>
     <a class="chat-wa" href="https://wa.me/6588787801" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.668-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>&nbsp;Message us on WhatsApp</span></a>
   </div>
   <div class="toast" id="toast"></div>
