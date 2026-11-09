@@ -529,12 +529,27 @@ document.addEventListener("DOMContentLoaded",()=>{
     (function(drop){
       var btn=drop.querySelector(".nav-drop-btn");
       if(!btn) return;
+      function hoverDesktop(){
+        return !!(window.matchMedia && window.matchMedia("(hover:hover) and (min-width: 1201px)").matches);
+      }
       btn.addEventListener("click",function(e){
         e.preventDefault();
+        // On a desktop mouse the menu is already open from hover, so a click just keeps it open.
+        if(hoverDesktop() && e.detail!==0){ closeOthers(drop); btn.setAttribute("aria-expanded","true"); return; }
         var open=!drop.classList.contains("open");
         closeOthers(drop);
         drop.classList.toggle("open",open);
         btn.setAttribute("aria-expanded",open?"true":"false");
+      });
+      drop.addEventListener("mouseenter",function(){
+        if(!hoverDesktop()) return;
+        closeOthers(drop);
+        btn.setAttribute("aria-expanded","true");
+      });
+      drop.addEventListener("mouseleave",function(){
+        if(!hoverDesktop()) return;
+        drop.classList.remove("open");
+        btn.setAttribute("aria-expanded","false");
       });
       drop.addEventListener("keydown",function(e){
         if(e.key==="Escape"||e.keyCode===27){ close(drop); btn.focus(); }
