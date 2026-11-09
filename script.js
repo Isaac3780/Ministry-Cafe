@@ -513,3 +513,36 @@ document.addEventListener("DOMContentLoaded",()=>{
     });
   }
 })();
+// Courses dropdown in the navigation (works on desktop and in the mobile menu)
+(function(){
+  var drops=document.querySelectorAll(".nav-drop");
+  if(!drops.length) return;
+  function close(drop){
+    drop.classList.remove("open");
+    var b=drop.querySelector(".nav-drop-btn");
+    if(b) b.setAttribute("aria-expanded","false");
+  }
+  function closeOthers(keep){
+    for(var i=0;i<drops.length;i++){ if(drops[i]!==keep) close(drops[i]); }
+  }
+  for(var i=0;i<drops.length;i++){
+    (function(drop){
+      var btn=drop.querySelector(".nav-drop-btn");
+      if(!btn) return;
+      btn.addEventListener("click",function(e){
+        e.preventDefault();
+        var open=!drop.classList.contains("open");
+        closeOthers(drop);
+        drop.classList.toggle("open",open);
+        btn.setAttribute("aria-expanded",open?"true":"false");
+      });
+      drop.addEventListener("keydown",function(e){
+        if(e.key==="Escape"||e.keyCode===27){ close(drop); btn.focus(); }
+      });
+    })(drops[i]);
+  }
+  document.addEventListener("click",function(e){
+    if(e.target && e.target.closest && e.target.closest(".nav-drop")) return;
+    closeOthers(null);
+  });
+})();
