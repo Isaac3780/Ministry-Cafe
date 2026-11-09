@@ -38,7 +38,7 @@ h1,h2,h3,h4 { font-family:var(--font-head); color:var(--char); line-height:1.25;
 .recruit-banner span, .recruit-banner a.cta { transition:opacity .45s; }
 .recruit-banner.fading span, .recruit-banner.fading a.cta { opacity:0; }
 
-/* Nav — dark bar under banner, white once scrolled (always tracks) */
+/* Nav â€” dark bar under banner, white once scrolled (always tracks) */
 .navbar { position:sticky; top:0; z-index:100; background:#211114; transition:background .3s, box-shadow .3s; }
 .navbar.scrolled { background:#211114; box-shadow:0 2px 20px rgba(0,0,0,.35); }
 .nav-logo { display:flex; align-items:center; gap:10px; color:#fff; font-family:var(--font-head); font-size:1.25rem; }
@@ -70,7 +70,7 @@ h1,h2,h3,h4 { font-family:var(--font-head); color:var(--char); line-height:1.25;
   background-image: linear-gradient(180deg,rgba(255,246,233,.93),rgba(255,246,233,.82)), var(--hero-photo, url('photos/hero-cafe-interior.jpg'));
   background-size:cover; background-position:center 45%; overflow:hidden;
 }
-.hero::after { content:"🍲"; position:absolute; font-size:22rem; opacity:.08; right:-30px; bottom:-70px; animation:steam 5s ease-in-out infinite; }
+.hero::after { content:"ðŸ²"; position:absolute; font-size:22rem; opacity:.08; right:-30px; bottom:-70px; animation:steam 5s ease-in-out infinite; }
 @keyframes steam { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-18px) rotate(5deg)} }
 .hero-content { position:relative; z-index:1; max-width:880px; animation:fadeUp .9s ease both; }
 @keyframes fadeUp { from{opacity:0; transform:translateY(24px)} to{opacity:1; transform:none} }
@@ -115,7 +115,7 @@ section[id], div[id].quiz, div[id].builder { scroll-margin-top:80px; }
 .kicker { text-transform:uppercase; letter-spacing:3px; font-size:.76rem; color:var(--chili); margin-bottom:10px; font-weight:800; }
 .section-dark .kicker { color:var(--chili-dark); }
 
-/* Cards — rows of 3 on desktop */
+/* Cards â€” rows of 3 on desktop */
 .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:40px; }
 .card { background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform .25s; }
 .card:hover { transform:translateY(-5px); }
@@ -127,9 +127,9 @@ section[id], div[id].quiz, div[id].builder { scroll-margin-top:80px; }
 .card img.food { width:100%; height:180px; object-fit:cover; transition:transform .5s; }
 .card:hover img.food { transform:scale(1.05); }
 
-/* Steps — rows of 3 on desktop */
+/* Steps â€” rows of 3 on desktop */
 .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:36px; }
-/* Modifiers — compound selectors so they always beat the base rules */
+/* Modifiers â€” compound selectors so they always beat the base rules */
 .steps.steps-4 { grid-template-columns:repeat(4,1fr); }
 .role-grid.role-grid-4 { grid-template-columns:repeat(4,1fr); }
 .cards.cards-2 { grid-template-columns:repeat(2,1fr); max-width:780px; margin-left:auto; margin-right:auto; }
@@ -256,7 +256,7 @@ footer { background:#1c1512; color:rgba(255,255,255,.75); padding:60px 20px 30px
 .feature p { color:var(--muted); margin-bottom:14px; }
 .checklist { list-style:none; margin:16px 0; }
 .checklist li { padding:8px 0 8px 32px; position:relative; font-size:.95rem; }
-.checklist li::before { content:"✓"; position:absolute; left:0; top:8px; width:22px; height:22px; background:var(--chili); color:#fff; border-radius:50%; display:grid; place-items:center; font-size:.75rem; font-weight:800; }
+.checklist li::before { content:"âœ“"; position:absolute; left:0; top:8px; width:22px; height:22px; background:var(--chili); color:#fff; border-radius:50%; display:grid; place-items:center; font-size:.75rem; font-weight:800; }
 .hours { background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); padding:28px; }
 .hours table { width:100%; border-collapse:collapse; font-size:.92rem; }
 .hours td { padding:8px 0; border-bottom:1px dashed #e5dcc8; } .hours td:last-child { text-align:right; font-weight:700; }
@@ -768,3 +768,13 @@ body.reveal-open .gate { grid-template-rows:0fr; opacity:0; padding-top:0; paddi
 .lookup-form h4 { font-size:1.25rem; margin-bottom:6px; }
 .lookup-lead { color:var(--muted); font-size:.92rem; margin-bottom:16px; }
 .lookup-form[hidden], .gate-alt[hidden] { display:none; }
+
+/* English programme: the enquiry gate sits on its own deep band */
+.gate-dark { background:linear-gradient(135deg,#2b1a13 0%,#3a2318 52%,#4a2b1c 100%); color:rgba(255,255,255,.86); }
+.gate-dark .gate-copy h2 { color:#fff; }
+.gate-dark .kicker { color:var(--broth); }
+.gate-dark .gate-copy p { color:rgba(255,255,255,.78); }
+.gate-dark .checklist li { color:rgba(255,255,255,.9); }
+.gate-dark .checklist li::before { background:var(--broth); color:#2b1a13; }
+.gate-dark .gate-copy .teaser-note { color:rgba(255,255,255,.62); }
+.gate-dark .gate-card { border-color:rgba(255,255,255,.16); box-shadow:0 24px 60px rgba(0,0,0,.38); }
