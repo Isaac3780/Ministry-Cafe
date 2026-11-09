@@ -804,3 +804,11 @@ body.reveal-open .gate { grid-template-rows:0fr; opacity:0; padding-top:0; paddi
   .nav-links .nav-drop-menu a:hover,
   .nav-links .nav-drop-menu a.active { border-color:var(--chili); }
 }
+
+/* Courses dropdown: coming-soon course items */
+.nav-links .nav-drop-menu a.is-soon { color:#9b8778; }
+.nav-links .nav-drop-menu a.is-soon:hover,
+.nav-links .nav-drop-menu a.is-soon.active { color:#fff; }
+.nav-links .nav-drop-menu .soon-tag { display:inline-block; margin-left:8px; padding:2px 7px; border-radius:50px; background:#f3e5d6; color:#8d6b55; font-size:.62rem; font-weight:800; letter-spacing:.6px; text-transform:uppercase; vertical-align:middle; }
+.nav-links .nav-drop-menu a.is-soon:hover .soon-tag,
+.nav-links .nav-drop-menu a.is-soon.active .soon-tag { background:rgba(255,255,255,.22); color:#fff; }
